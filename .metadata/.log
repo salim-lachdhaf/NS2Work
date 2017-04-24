@@ -1,0 +1,123 @@
+!SESSION 2017-04-14 15:55:54.015 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_121
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2017-04-14 16:25:09.310
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2017-04-14 16:25:09.310
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.310
+!MESSAGE "CDT GNU Toolchain Debug Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.311
+!MESSAGE "Eclipse C/C++ Development Tools" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.311
+!MESSAGE "CDT GCC Cross Compiler Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.311
+!MESSAGE "Eclipse C/C++ Remote Launch" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.311
+!MESSAGE "CDT GNU Toolchain Build Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.311
+!MESSAGE "Eclipse C/C++ DSF gdb Debugger Integration" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.311
+!MESSAGE "Eclipse C/C++ Development Platform" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.311
+!MESSAGE "Mylyn Bridge: C/C++ Development" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.311
+!MESSAGE "Eclipse C/C++ Memory View Enhancements" will be ignored because a newer version is already installed. 
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2017-04-14 16:25:09.311
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2017-04-14 16:25:09.311
+!MESSAGE Software being installed: Eclipse CDT Testing Feature 6.0.0.201002161416 (org.eclipse.cdt.testing.feature.group 6.0.0.201002161416)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2017-04-14 16:25:09.311
+!MESSAGE Missing requirement: Eclipse CDT Testing Feature 6.0.0.201002161416 (org.eclipse.cdt.testing.feature.group 6.0.0.201002161416) requires 'org.junit 0.0.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2017-04-14 16:25:09.688
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2017-04-14 16:25:09.688
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.688
+!MESSAGE "CDT GNU Toolchain Debug Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.688
+!MESSAGE "Eclipse C/C++ Development Tools" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.695
+!MESSAGE "CDT GCC Cross Compiler Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.695
+!MESSAGE "Eclipse C/C++ Remote Launch" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.696
+!MESSAGE "CDT GNU Toolchain Build Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.696
+!MESSAGE "Eclipse C/C++ DSF gdb Debugger Integration" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.696
+!MESSAGE "Eclipse C/C++ Development Platform" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.696
+!MESSAGE "Mylyn Bridge: C/C++ Development" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.696
+!MESSAGE "Eclipse C/C++ Memory View Enhancements" will be ignored because a newer version is already installed. 
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2017-04-14 16:25:09.696
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2017-04-14 16:25:09.696
+!MESSAGE Software being installed: Eclipse CDT Testing Feature 6.0.0.201002161416 (org.eclipse.cdt.testing.feature.group 6.0.0.201002161416)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2017-04-14 16:25:09.696
+!MESSAGE Missing requirement: Eclipse CDT Testing Feature 6.0.0.201002161416 (org.eclipse.cdt.testing.feature.group 6.0.0.201002161416) requires 'org.junit 0.0.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2017-04-14 16:25:09.944
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2017-04-14 16:25:09.945
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.945
+!MESSAGE "CDT GNU Toolchain Debug Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.945
+!MESSAGE "Eclipse C/C++ Development Tools" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.945
+!MESSAGE "CDT GCC Cross Compiler Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.945
+!MESSAGE "Eclipse C/C++ Remote Launch" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.945
+!MESSAGE "CDT GNU Toolchain Build Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.945
+!MESSAGE "Eclipse C/C++ DSF gdb Debugger Integration" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.950
+!MESSAGE "Eclipse C/C++ Development Platform" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.950
+!MESSAGE "Mylyn Bridge: C/C++ Development" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.951
+!MESSAGE "Eclipse C/C++ Memory View Enhancements" will be ignored because a newer version is already installed. 
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2017-04-14 16:25:09.951
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2017-04-14 16:25:09.951
+!MESSAGE Software being installed: Eclipse CDT Testing Feature 6.0.0.201002161416 (org.eclipse.cdt.testing.feature.group 6.0.0.201002161416)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2017-04-14 16:25:09.951
+!MESSAGE Missing requirement: Eclipse CDT Testing Feature 6.0.0.201002161416 (org.eclipse.cdt.testing.feature.group 6.0.0.201002161416) requires 'org.junit 0.0.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2017-04-14 16:25:09.951
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2017-04-14 16:25:09.951
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.951
+!MESSAGE "CDT GNU Toolchain Debug Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.951
+!MESSAGE "Eclipse C/C++ Development Tools" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.951
+!MESSAGE "CDT GCC Cross Compiler Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.951
+!MESSAGE "Eclipse C/C++ Remote Launch" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.952
+!MESSAGE "CDT GNU Toolchain Build Support" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.952
+!MESSAGE "Eclipse C/C++ DSF gdb Debugger Integration" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.952
+!MESSAGE "Eclipse C/C++ Development Platform" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.952
+!MESSAGE "Mylyn Bridge: C/C++ Development" will be ignored because a newer version is already installed. 
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2017-04-14 16:25:09.952
+!MESSAGE "Eclipse C/C++ Memory View Enhancements" will be ignored because a newer version is already installed. 
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2017-04-14 16:25:09.952
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2017-04-14 16:25:09.952
+!MESSAGE Software being installed: Eclipse CDT Testing Feature 6.0.0.201002161416 (org.eclipse.cdt.testing.feature.group 6.0.0.201002161416)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2017-04-14 16:25:09.952
+!MESSAGE Missing requirement: Eclipse CDT Testing Feature 6.0.0.201002161416 (org.eclipse.cdt.testing.feature.group 6.0.0.201002161416) requires 'org.junit 0.0.0' but it could not be found
