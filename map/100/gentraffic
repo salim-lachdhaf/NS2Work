@@ -1,0 +1,35 @@
+proc RandomInteger {max} {
+     return [expr {int(rand()*($max-1))}]
+}	
+
+#todo change with correct nodes number
+for {set i 0} {$i < 101 } {incr i} {
+	#Random time
+	set stime [RandomInteger 200]
+
+
+	#Pick Random Node
+	set randomNode [RandomInteger 101];#todo change with correct nodes number
+
+	#choisir random node <> to the source (i)
+	while { $randomNode== $i } {
+		set randomNode [RandomInteger 101];#todo change with correct nodes number
+	} 
+
+	 #puts "$i connect to $randomNode at $stime"
+
+	puts "#\n# $i connecting to $randomNode at time $stime\n#"
+	
+	puts "set udp_($i) \[new Agent/UDP\]"
+	puts "\$ns_ attach-agent \$node_($i) \$udp_($i)"
+	puts "set null_($i) \[new Agent/Null\]"
+	puts "\$ns_ attach-agent \$node_($randomNode) \$null_($i)"
+	puts "set cbr_($i) \[new Application/Traffic/CBR\]"
+	puts "\$cbr_($i) set packetSize_ 512"
+	puts "\$cbr_($i) set interval_ 0.2"
+	puts "\$cbr_($i) set random_ 0"
+	puts "\$cbr_($i) set maxpkts_ 20"
+	puts "\$cbr_($i) attach-agent \$udp_($i)"
+	puts "\$ns_ connect \$udp_($i) \$null_($i)"
+	puts "\$ns_ at $stime \"\$cbr_($i) start\""
+}
