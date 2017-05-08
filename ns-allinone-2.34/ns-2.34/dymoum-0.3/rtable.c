@@ -70,7 +70,7 @@ rtable_entry_t *NS_CLASS rtable_find(struct in_addr dest_addr)
 //////////////////////////////////////////CRC 32 Calc///////////////////////////////////////
 u_int32_t NS_CLASS rc_crc32(u_int32_t crc, const u_int32_t val){
     char aux[32];
-    sprintf(aux,"%u", val);
+    //printf(aux,"%u", val);
     size_t len= strlen(aux);
     static u_int32_t table[256];
     static int have_table = 0;

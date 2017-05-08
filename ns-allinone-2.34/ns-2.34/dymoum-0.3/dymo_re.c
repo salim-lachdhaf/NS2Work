@@ -176,10 +176,10 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 //////check if the request destination exist in my set/////////////////////////////////////////////////////////////////////////////////////////////
 	struct in_addr target_addrCRC;
 	if(re->a){//if RREQ Replace @ by CRC(@);
-		 //target_addrCRC.s_addr	= re->target_addr;
-		 target_addrCRC.s_addr=rc_crc32(0,re->target_addr);//replace RREQ destination by its CRC///////////////////////
+		 target_addrCRC.s_addr	= re->target_addr;
+		 //target_addrCRC.s_addr=rc_crc32(0,re->target_addr);//replace RREQ destination by its CRC///////////////////////
 
-		 entry = rtable_findGetOriginalAddress(target_addrCRC);//vérifier l'existance de @original
+		 entry = rtable_find/*GetOriginalAddress*/(target_addrCRC);//vérifier l'existance de @original
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -219,7 +219,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 
 	
 	// If this node is the target, the RE must not be retransmitted
-	else if ((re->target_addr == (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr) || (re->target_addr == rc_crc32(0,(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr)))
+	else if ((re->target_addr == (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr) /*|| (re->target_addr == rc_crc32(0,(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr))*/)
 	{
 		// If A-bit is set, a RE is sent back
 		if (re->a)
@@ -246,7 +246,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 				this_host.is_gw,
 				NET_DIAMETER,
 				re->re_blocks[0].re_hopcnt);
-			//printf("Target Node:%u receive a RREQ from: %u To: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,node_addr.s_addr,target_addr.s_addr);
+			 //printf("Target Node:%u receive a RREQ from: %u To: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,node_addr.s_addr,target_addr.s_addr);
 			
 			re_send_rrep(rrep);
 		}else{
@@ -256,30 +256,9 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 			node_addr.s_addr	= re->re_blocks[0].re_node_addr;
 			target_addr.s_addr	=  (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr;//re->target_addr;envoyer l'adresse originale sans CRC
 			target_seqnum		= ntohl(re->target_seqnum);
-			printf("Target Node:%u receive a RREP from: %u To: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,node_addr.s_addr,target_addr.s_addr);
+			//printf("Target Node:%u receive a RREP from: %u To: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,node_addr.s_addr,target_addr.s_addr);
 						
 		}
-	}
-	// il a une route a la destination
-	else if((re->a)&&(entry)&&(((int32_t) this_host.seqnum) >= ((int32_t) ntohl(re->target_seqnum)))){
-		
-		struct in_addr target_addr;
-		
-		node_addr.s_addr	= re->re_blocks[0].re_node_addr;
-		target_addr.s_addr	= entry->rt_dest_addr.s_addr;//re->target_addr;//envoyer l'adresse originale sans CRC
-		
-
-		RE *rrep = re_create_rrep(
-			node_addr,
-			ntohl(re->re_blocks[0].re_node_seqnum),
-			target_addr,
-			this_host.seqnum,
-			this_host.prefix,
-			this_host.is_gw,
-			NET_DIAMETER,
-			re->re_blocks[0].re_hopcnt);
-       // printf("Intermidiare node:%u receive a RREQ from: %u To: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,node_addr.s_addr,target_addr.s_addr);
-		re_send_rrep(rrep);
 	}
 	// Otherwise the RE is considered to be forwarded
 	else if (generic_postprocess((DYMO_element *) re))

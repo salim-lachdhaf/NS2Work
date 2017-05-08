@@ -79,7 +79,7 @@ proc getopt {argc argv} {
 proc create-cbr-connection { src dst } {
 	global rng cbr_cnt opt
 
-	set stime [$rng uniform 0.0 150.0]
+	set stime [$rng uniform 0.0 200.0]
 
 	puts "#\n# $src connecting to $dst at time $stime\n#"
 
@@ -91,10 +91,10 @@ proc create-cbr-connection { src dst } {
 	puts "\$ns_ attach-agent \$node_($dst) \$null_($cbr_cnt)"
 	puts "set cbr_($cbr_cnt) \[new Application/Traffic/CBR\]"
 	puts "\$cbr_($cbr_cnt) set packetSize_ $opt(pktsize)"
-	#puts "\$cbr_($cbr_cnt) set interval_ $opt(interval)"
+	puts "\$cbr_($cbr_cnt) set interval_ 0.2"
 	puts "\$cbr_($cbr_cnt) set random_ 0"
-    puts "\$cbr_($cbr_cnt) set rate_ $opt(rate)Mb"
-	#puts "\$cbr_($cbr_cnt) set maxpkts_ 10000"
+    #puts "\$cbr_($cbr_cnt) set rate_ $opt(rate)Mb"
+	puts "\$cbr_($cbr_cnt) set maxpkts_ 50"
 	puts "\$cbr_($cbr_cnt) attach-agent \$udp_($cbr_cnt)"
 	puts "\$ns_ connect \$udp_($cbr_cnt) \$null_($cbr_cnt)"
 	
@@ -106,7 +106,7 @@ proc create-cbr-connection { src dst } {
 proc create-tcp-connection { src dst } {
 	global rng cbr_cnt opt
 
-	set stime [$rng uniform 0.0 180.0]
+	set stime [$rng uniform 0.0 200.0]
 
 	puts "#\n# $src connecting to $dst at time $stime\n#"
 

@@ -33,7 +33,7 @@
 #include <assert.h>
 
 
-#define RREQ_WAIT_TIME	2000
+#define RREQ_WAIT_TIME	1000
 #define RREQ_TRIES	3
 
 #define RB_STALE	0
