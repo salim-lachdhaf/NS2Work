@@ -1,0 +1,580 @@
+--- ns-2.34-Clean/Makefile.in	2009-06-14 19:35:44.000000000 +0200
++++ ns-2.34/Makefile.in	2009-07-29 11:29:05.000000000 +0200
+@@ -53,13 +53,18 @@
+ # for diffusion
+ #DIFF_INCLUDES = "./diffusion3/main ./diffusion3/lib ./diffusion3/nr ./diffusion3/ns"
+ 
++# DYMO_UM
++DYMO_UM_DIR=dymoum
++DYMO_UM_LIB=libdymoum.a
++ 
++
+ CCOPT	= @V_CCOPT@ 
+ STATIC	= @V_STATIC@
+ #LDFLAGS	= $(STATIC)
+ LDFLAGS	= @LDFLAGS@ 
+ LDOUT	= -o $(BLANK)
+ 
+-DEFINE	= -DTCP_DELAY_BIND_ALL -DNO_TK @V_DEFINE@ @V_DEFINES@ @DEFS@ -DNS_DIFFUSION -DSMAC_NO_SYNC -DCPP_NAMESPACE=@CPP_NAMESPACE@ -DUSE_SINGLE_ADDRESS_SPACE -Drng_test
++DEFINE	= -DTCP_DELAY_BIND_ALL -DNO_TK @V_DEFINE@ @V_DEFINES@ @DEFS@ -DNS_DIFFUSION -DSMAC_NO_SYNC -DCPP_NAMESPACE=@CPP_NAMESPACE@ -DDYMO_UM -DNS_PORT -DUSE_SINGLE_ADDRESS_SPACE -Drng_test
+ 
+ INCLUDES = \
+ 	-I. @V_INCLUDE_X11@ \
+@@ -72,14 +77,17 @@
+ 	-I./diffusion3/lib/nr -I./diffusion3/ns \
+ 	-I./diffusion3/filter_core -I./asim/ -I./qs \
+ 	-I./diffserv -I./satellite \
+-	-I./wpan
++	-I./wpan \
++	-I./$(DYMO_UM_DIR)
+ 
+ 
+ LIB	= \
+ 	@V_LIBS@ \
+ 	@V_LIB_X11@ \
+ 	@V_LIB@ \
+-	-lm @LIBS@
++	-lm @LIBS@ \
++	-L$(DYMO_UM_DIR) \
++     	-ldymoum
+ #	-L@libdir@ \
+ 
+ CFLAGS	+= $(CCOPT) $(DEFINE) 
+@@ -386,10 +394,21 @@
+ 
+ all: $(NS) $(BUILD_NSE) $(NSTK) all-recursive Makefile
+ 
++# DYMO_UM
++$(DYMO_UM_DIR)/$(DYMO_UM_LIB):
++	cd $(DYMO_UM_DIR) && $(MAKE) $(DYMO_UM_LIB) NS_DEFS='$(DEFINE)' OPTS='$(CCOPT)' NS_INC='$(subst -I.,-I$(shell pwd),$(INCLUDES))'
++
++dymo_um_clean:
++	cd $(DYMO_UM_DIR) && $(MAKE) clean
++
+ 
+ all-recursive:
+ 	for i in $(SUBDIRS); do ( cd $$i; $(MAKE) all; ) done
+ 
++# DYMO_UM
++$(NS):	$(DYMO_UM_DIR)/$(DYMO_UM_LIB) $(OBJ) common/tclAppInit.o 
++	$(LINK) $(LDFLAGS) $(LDOUT)$@ \
++  		common/tclAppInit.o $(OBJ) $(LIB)
+ 
+ 
+ 
+@@ -548,7 +567,8 @@
+ install-recursive: force
+ 	for i in $(SUBDIRS); do ( cd $$i; $(MAKE) install; ) done
+ 
+-clean:
++# DYMO_UM
++clean: dymo_um_clean
+ 	$(RM) $(CLEANFILES)
+ 
+ AUTOCONF_GEN = tcl/lib/ns-autoconf.tcl
+--- ns-2.34-Clean/trace/cmu-trace.cc	2009-06-14 19:35:07.000000000 +0200
++++ ns-2.34/trace/cmu-trace.cc	2009-07-29 11:01:22.000000000 +0200
+@@ -53,6 +53,9 @@
+ #include <aodv/aodv_packet.h> //AODV
+ // AOMDV patch
+ #include <aomdv/aomdv_packet.h>
++#ifdef DYMO_UM
++#include <dymoum/ns/dymo_um.h>
++#endif  /* DYMO_UM */
+ #include <cmu-trace.h>
+ #include <mobilenode.h>
+ #include <simulator.h>
+@@ -953,6 +956,289 @@
+         }
+ }
+ 
++#ifdef DYMO_UM
++void
++CMUTrace::format_dymoum(Packet *p, int offset) {
++	int len;
++	RE *re;
++	RERR *rerr;
++	UERR *uerr;
++	HELLO *hello;
++	hdr_dymoum *dh = HDR_DYMOUM(p);
++	
++	if (pt_->tagged()) {
++		switch (dh->type)
++		{
++			case DYMO_RE_TYPE:
++				
++				re = (RE *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"-dymoum:e RE -dymoum:m %d -dymoum:h %d "
++						"-dymoum:l %d -dymoum:c %d -dymoum:i %d "
++						"-dymoum:a %d -dymoum:t %d -dymoum:s %d "
++						"-dymoum:n %d ",
++						re->m, re->h, re->len, re->ttl, re->i,
++						re->a, re->target_addr, re->target_seqnum,
++						re->thopcnt);
++				
++				len = strlen(pt_->buffer());
++				for (int i = 0; i < NS_CLASS re_numblocks(re); i++) {
++					struct re_block block = re->re_blocks[i];
++					sprintf(pt_->buffer()  + len,
++							"[-dymoum:g %d -dymoum:p %d "
++							"-dymoum:h %d -dymoum:n %d "
++							"-dymoum:s %d] ",
++							block.g, block.prefix, block.re_hopcnt,
++							block.re_node_addr,
++							block.re_node_seqnum);
++					len = strlen(pt_->buffer());
++				}
++				break;
++				
++				
++			case DYMO_RERR_TYPE:
++				
++				rerr = (RERR *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"-dymoum:e RERR -dymoum:m %d -dymoum:h %d "
++						"-dymoum:l %d -dymoum:c %d -dymoum:i %d ",
++						rerr->m, rerr->h, rerr->len, rerr->ttl, rerr->i);
++				
++				len = strlen(pt_->buffer());
++				for (int i = 0; i < NS_CLASS rerr_numblocks(rerr); i++) {
++					struct rerr_block block = rerr->rerr_blocks[i];
++					sprintf(pt_->buffer()  + len,
++							"[-dymoum:n %d -dymoum:s %d] ",
++							block.unode_addr,
++							block.unode_seqnum);
++					len = strlen(pt_->buffer());
++				}
++				break;
++				
++				
++			case DYMO_UERR_TYPE:
++				
++				uerr = (UERR *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"-dymoum:e UERR -dymoum:m %d -dymoum:h %d "
++						"-dymoum:l %d -dymoum:t %d -dymoum:u %d "
++						"-dymoum:n %d -dymoum:y %d ",
++						uerr->m, uerr->h, uerr->len, uerr->target_addr,
++						uerr->uelem_target_addr, uerr->uerr_node_addr,
++						uerr->uelem_type);
++				break;
++				
++				
++			case DYMO_HELLO_TYPE:
++				
++				hello = (HELLO *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"-dymoum:e HELLO -dymoum:m %d -dymoum:h %d "
++						"-dymoum:l %d ",
++						hello->m, hello->h, hello->len);
++				break;
++				
++				
++			case DYMO_ECHOREPLY_TYPE:
++				
++				sprintf(pt_->buffer()  + offset,
++						"-dymoum:e ECHOREPLY -dymoum:l %d ",
++						dh->len);
++				break;
++				
++				
++			default:
++				
++				sprintf(pt_->buffer()  + offset,
++						"-dymoum:e UNKNOWN(%d) -dymoum:m %d -dymoum:h %d "
++						"-dymoum:l %d -dymoum:c %d "
++						"-dymoum:i %d -dymoum:t %d ",
++						dh->type, dh->m, dh->h, dh->len,
++						dh->ttl, dh->i, dh->target_addr);
++		}
++	}
++	else if (newtrace_) {
++		switch (dh->type)
++		{
++			case DYMO_RE_TYPE:
++				
++				re = (RE *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"-P DYMOUM(RE) -Pm %d -Ph %d "
++						"-Pl %d -Pc %d -Pi %d "
++						"-Pa %d -Pt %d -Ps %d "
++						"-Pn %d ",
++						re->m, re->h, re->len, re->ttl, re->i,
++						re->a, re->target_addr, re->target_seqnum,
++						re->thopcnt);
++				
++				len = strlen(pt_->buffer());
++				for (int i = 0; i < NS_CLASS re_numblocks(re); i++) {
++					struct re_block block = re->re_blocks[i];
++					sprintf(pt_->buffer()  + len,
++							"[-Pg %d -Pp %d -Ph %d -Pn %d -Ps %d] ",
++							block.g, block.prefix, block.re_hopcnt,
++							block.re_node_addr,
++							block.re_node_seqnum);
++					len = strlen(pt_->buffer());
++				}
++				break;
++				
++				
++			case DYMO_RERR_TYPE:
++				
++				rerr = (RERR *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"-P DYMOUM(RERR) -Pm %d -Ph %d "
++						"-Pl %d -Pc %d -Pi %d ",
++						rerr->m, rerr->h, rerr->len, rerr->ttl, rerr->i);
++				
++				len = strlen(pt_->buffer());
++				for (int i = 0; i < NS_CLASS rerr_numblocks(rerr); i++) {
++					struct rerr_block block = rerr->rerr_blocks[i];
++					sprintf(pt_->buffer() + len,
++							"[-Pn %d -Ps %d] ",
++							block.unode_addr,
++							block.unode_seqnum);
++					len = strlen(pt_->buffer());
++				}
++				break;
++				
++				
++			case DYMO_UERR_TYPE:
++				
++				uerr = (UERR *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"-P DYMOUM(UERR) -Pm %d -Ph %d "
++						"-Pl %d -Pt %d -Pu %d "
++						"-Pn %d -Py %d ",
++						uerr->m, uerr->h, uerr->len, uerr->target_addr,
++						uerr->uelem_target_addr, uerr->uerr_node_addr,
++						uerr->uelem_type);
++				break;
++				
++				
++			case DYMO_HELLO_TYPE:
++				
++				hello = (HELLO *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"-P DYMOUM(HELLO) -Pm %d -Ph %d -Pl %d ",
++						hello->m, hello->h, hello->len);
++				break;
++				
++				
++			case DYMO_ECHOREPLY_TYPE:
++				
++				sprintf(pt_->buffer()  + offset,
++						"-P DYMOUM(ECHOREPLY) -Pl %d ",
++						dh->len);
++				break;
++				
++			default:
++				
++				sprintf(pt_->buffer()  + offset,
++						"-P UNKNOWN(%d) -Pm %d -Ph %d "
++						"-Pl %d -Pc %d "
++						"-Pi %d -Pt %d ",
++						dh->type, dh->m, dh->h, dh->len,
++						dh->ttl, dh->i, dh->target_addr);
++		}
++	}
++	else {
++		switch (dh->type)
++		{
++			case DYMO_RE_TYPE:
++				
++				re = (RE *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"[ RE %d %d "
++						"%d %d %d "
++						"%d %d %d %d ",
++						re->m, re->h, re->len, re->ttl, re->i,
++						re->a, re->target_addr, re->target_seqnum,
++						re->thopcnt);
++				
++				len = strlen(pt_->buffer());
++				for (int i = 0; i < NS_CLASS re_numblocks(re); i++) {
++					struct re_block block = re->re_blocks[i];
++					sprintf(pt_->buffer()  + len,
++							"[%d %d %d %d %d] ",
++							block.g, block.prefix, block.re_hopcnt,
++							block.re_node_addr,
++							block.re_node_seqnum);
++					len = strlen(pt_->buffer());
++				}
++				
++				sprintf(pt_->buffer() + len, "]");
++				break;
++				
++				
++			case DYMO_RERR_TYPE:
++				
++				rerr = (RERR *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"[ RERR %d %d "
++						"%d %d %d ",
++						rerr->m, rerr->h, rerr->len,
++						rerr->ttl, rerr->i);
++				
++				len = strlen(pt_->buffer());
++				for (int i = 0; i < NS_CLASS rerr_numblocks(rerr); i++) {
++					struct rerr_block block = rerr->rerr_blocks[i];
++					sprintf(pt_->buffer() + len,
++							"[%d %d] ",
++							block.unode_addr,
++							block.unode_seqnum);
++					len = strlen(pt_->buffer());
++				}
++				
++				sprintf(pt_->buffer()  + len, "]");
++				break;
++				
++				
++			case DYMO_UERR_TYPE:
++				
++				uerr = (UERR *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"[ UERR %d %d "
++						"%d %d %d "
++						"%d %d ]",
++						uerr->m, uerr->h, uerr->len, uerr->target_addr,
++						uerr->uelem_target_addr, uerr->uerr_node_addr,
++						uerr->uelem_type);
++				break;
++				
++				
++			case DYMO_HELLO_TYPE:
++				
++				hello = (HELLO *) dh;
++				sprintf(pt_->buffer()  + offset,
++						"[ HELLO %d %d %d ]",
++						hello->m, hello->h, hello->len);
++				break;
++				
++				
++			case DYMO_ECHOREPLY_TYPE:
++				
++				sprintf(pt_->buffer()  + offset,
++						"[ ECHOREPLY %d ]",
++						dh->len);
++				break;
++				
++			default:
++				
++				sprintf(pt_->buffer()  + offset,
++						"[ UNKNOWN(%d) %d %d "
++						"%d %d "
++						"%d %d ]",
++						dh->type, dh->m, dh->h, dh->len,
++						dh->ttl, dh->i, dh->target_addr);
++		}
++	}
++}
++#endif  /* DYMO_UM */
++
++
+ // AOMDV patch
+ void
+ CMUTrace::format_aomdv(Packet *p, int offset)
+@@ -1359,6 +1645,12 @@
+ 	        case PT_DIFF:
+ 			break;
+ 		case PT_GAF:
++				break;
++		#ifdef DYMO_UM
++			case PT_DYMOUM:
++				format_dymoum(p, offset);
++				break;
++		#endif  /* DYMO_UM */
+ 		case PT_PING:
+ 			break;
+ 		default:
+
+--- ns-2.34-Clean/trace/cmu-trace.h	2009-06-14 19:35:07.000000000 +0200
++++ ns-2.34/trace/cmu-trace.h	2009-07-28 14:56:41.000000000 +0200
+@@ -160,7 +160,9 @@
+         void    format_imep(Packet *p, int offset);
+         void    format_aodv(Packet *p, int offset);
+ 	void    format_aomdv(Packet *p, int offset);
+-
++	#ifdef DYMO_UM
++	        void    format_dymoum(Packet *p, int offset);
++	#endif  /* DYMO_UM */
+ 	// This holds all the tracers added at run-time
+ 	static PacketTracer *pktTrc_;
+ 
+--- ns-2.34-Clean/tcl/lib/ns-agent.tcl	2009-06-14 19:35:41.000000000 +0200
++++ ns-2.34/tcl/lib/ns-agent.tcl	2009-07-29 10:40:47.000000000 +0200
+@@ -192,8 +192,20 @@
+ Agent/AODV set sport_   0
+ Agent/AODV set dport_   0
+ 
++
++Agent/DYMOUM instproc init args {
++
++        $self next $args
++}
++
++Agent/DYMOUM set sport_ 0
++Agent/DYMOUM set dport_ 0
++
++
+ # AOMDV patch
+ Agent/AOMDV set sport_   0
+ Agent/AOMDV set dport_   0
+ Agent/AOMDV set aomdv_prim_alt_path_len_diff_ 1
+ Agent/AOMDV set aomdv_max_paths_ 3
++
++
+--- ns-2.34-Clean/tcl/lib/ns-default.tcl	2009-06-14 19:35:41.000000000 +0200
++++ ns-2.34/tcl/lib/ns-default.tcl	2009-07-28 15:18:12.000000000 +0200
+@@ -1451,6 +1451,12 @@
+ 
+ Delayer set debug_ false
+ 
++# DYMO_UM routing agent
++Agent/DYMOUM set no_path_acc_ false
++Agent/DYMOUM set reissue_rreq_ false
++Agent/DYMOUM set s_bit_ false
++Agent/DYMOUM set hello_ival_ 0
++
+ Agent/TCP/Linux set rtxcur_init_ 3
+ Agent/TCP/Linux set maxrto_ 120
+ Agent/TCP/Linux set minrto_ 0.2
+--- ns-2.34-Clean/tcl/lib/ns-lib.tcl	2009-06-14 19:35:41.000000000 +0200
++++ ns-2.34/tcl/lib/ns-lib.tcl	2009-07-28 15:20:11.000000000 +0200
+@@ -630,6 +630,9 @@
+ 		    AODV {
+ 			    set ragent [$self create-aodv-agent $node]
+ 		    }
++		    DYMOUM {
++	                     set ragent [$self create-dymoum-agent $node]
++	            }
+ 		    AOMDV {
+ 			    set ragent [$self create-aomdv-agent $node]
+ 		    }
+@@ -853,6 +856,7 @@
+         return $ragent
+ }
+ 
++
+ # AOMDV patch
+ Simulator instproc create-aomdv-agent { node } {
+ 	set ragent [new Agent/AOMDV [$node node-addr]]
+@@ -861,6 +865,22 @@
+ 	return $ragent
+ }
+ 
++Simulator instproc create-dymoum-agent { node } {
++        # Create DYMOUM routing agent
++        set ragent [new Agent/DYMOUM [$node node-addr]]
++        $self at 0.0 "$ragent start"
++        $node set ragent_ $ragent
++        return $ragent
++}
++
++Simulator instproc create-dymoum-agent { node } {
++        # Create DYMOUM routing agent
++        set ragent [new Agent/DYMOUM [$node node-addr]]
++        $self at 0.0 "$ragent start"
++        $node set ragent_ $ragent
++        return $ragent
++}
++
+ Simulator instproc use-newtrace {} {
+ 	Simulator set WirelessNewTrace_ 1
+ } 
+--- ns-2.34-Clean/tcl/lib/ns-mobilenode.tcl	2009-06-14 19:35:41.000000000 +0200
++++ ns-2.34/tcl/lib/ns-mobilenode.tcl	2009-07-28 14:40:53.000000000 +0200
+@@ -167,7 +167,7 @@
+ # if portnumber is 255, default target is set to the routing agent
+ #
+ Node/MobileNode instproc add-target { agent port } {
+-	$self instvar dmux_ imep_ toraDebug_ 
++	$self instvar dmux_ imep_ toraDebug_ mac_ 
+ 
+ 	set ns [Simulator instance]
+ 	set newapi [$ns imep-support]
+@@ -191,12 +191,24 @@
+ 	if {$aomdvonly != -1 } {
+ 		$agent if-queue [$self set ifq_(0)]   ;# ifq between LL and MAC
+ 	}
++
++        # Special processing for DYMOUM
++        set dymoumonly [string first "DYMOUM" [$agent info class]]
++        if {$dymoumonly != -1 } {
++                $agent install-tap $mac_(0)
++        }
+ 	
+ 	# Special processing for AODV
+ 	set aodvonly [string first "AODV" [$agent info class]] 
+ 	if {$aodvonly != -1 } {
+ 		$agent if-queue [$self set ifq_(0)]   ;# ifq between LL and MAC
+ 	}
++
++        # Special processing for DYMOUM
++        set dymoumonly [string first "DYMOUM" [$agent info class]]
++        if {$dymoumonly != -1 } {
++                $agent install-tap $mac_(0)
++        }
+ 	
+ 	#<zheng: add>
+ 	# Special processing for ZBR
+--- ns-2.34-Clean/tcl/lib/ns-packet.tcl	2009-06-14 19:35:41.000000000 +0200
++++ ns-2.34/tcl/lib/ns-packet.tcl	2009-07-28 14:48:16.000000000 +0200
+@@ -169,6 +169,7 @@
+ 	TORA 	# routing protocol for ad-hoc networks
+ 	# AOMDV patch
+ 	AOMDV
++	DYMOUM # on-demand routing protocol
+ # Other:
+ 	Encap 	# common/encap.cc
+         IPinIP 	# IP encapsulation 
+--- ns-2.34-Clean/common/packet.h	2009-06-14 19:35:44.000000000 +0200
++++ ns-2.34/common/packet.h	2009-07-28 15:55:33.000000000 +0200
+@@ -182,8 +182,13 @@
+ 	// AOMDV packet
+ static const packet_t PT_AOMDV = 61;
+ 
++
++	// DYMOUM packet
++static const packet_t PT_DYMOUM = 62;
++
++
+         // insert new packet types here
+-static packet_t       PT_NTYPE = 62; // This MUST be the LAST one
++static packet_t       PT_NTYPE = 63; // This MUST be the LAST one
+ 
+ enum packetClass
+ {
+@@ -248,7 +253,8 @@
+ 		if (type == PT_DSR || 
+ 		    type == PT_MESSAGE || 
+ 		    type == PT_TORA || 
+-		    type == PT_AODV)
++		    type == PT_AODV || 
++			type == PT_DYMOUM)
+ 			return ROUTING;		
+ 		if (type == PT_TCP || 
+ 		    type == PT_TELNET || 
+@@ -383,6 +389,10 @@
+ 		// AOMDV patch
+ 		name_[PT_AOMDV]= "AOMDV";
+ 
++
++		name_[PT_DYMOUM] = "DYMOUM";
++
++		
+ 		name_[PT_NTYPE]= "undefined";
+ 	}
+ 	static int addPacket(char *name);
+--- ns-2.34-Clean/queue/priqueue.cc	2009-06-14 19:35:44.000000000 +0200
++++ ns-2.34/queue/priqueue.cc	2009-07-28 15:14:57.000000000 +0200
+@@ -92,6 +92,9 @@
+                 case PT_AODV:
+                 // AOMDV patch
+ 		case PT_AOMDV:
++		#ifdef DYMO_UM
++		case PT_DYMOUM:
++	    #endif  /* DYMO_UM */
+ 			recvHighPriority(p, h);
+                         break;
+ 

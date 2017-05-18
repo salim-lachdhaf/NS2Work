@@ -97,7 +97,7 @@ RE *NS_CLASS re_create_rrep(struct in_addr target_addr,
 	re->re_blocks[0].prefix		= prefix;
 	re->re_blocks[0].res		= 0;
 	re->re_blocks[0].re_hopcnt	= 0;
-	re->re_blocks[0].re_node_addr	= (u_int32_t) re_node_addr.s_addr;
+	re->re_blocks[0].re_node_addr	=(u_int32_t) re_node_addr.s_addr;
 	re->re_blocks[0].re_node_seqnum	= htonl(re_node_seqnum);
 	
 	return re;
@@ -173,15 +173,14 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		}
 	}
 
-//////check if the request destination exist in my set/////////////////////////////////////////////////////////////////////////////////////////////
+/*/////check if the request destination exist in my set/////////////////////////////////////////////////////////////////////////////////////////////
 	struct in_addr target_addrCRC;
 	if(re->a){//if RREQ Replace @ by CRC(@);
 		 target_addrCRC.s_addr	= re->target_addr;
 		 //target_addrCRC.s_addr=rc_crc32(0,re->target_addr);//replace RREQ destination by its CRC///////////////////////
-
-		 entry = rtable_find/*GetOriginalAddress*/(target_addrCRC);//vérifier l'existance de @original
+		 //entry = rtable_find/*GetOriginalAddress(target_addrCRC);//vérifier l'existance de @original
 	}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 	
 	
 	
@@ -192,7 +191,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 				u_int32_t target_seqnum;
 			
 				node_addr.s_addr	= re->re_blocks[0].re_node_addr;
-				target_addr.s_addr	= target_addrCRC.s_addr;//repondre sans chercher dans la table de routage
+				target_addr.s_addr	= re->target_addr;//repondre sans chercher dans la table de routage
 				target_seqnum		= ntohl(re->target_seqnum);
 			
 				if (!target_seqnum ||
@@ -260,9 +259,42 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 						
 		}
 	}
-	// Otherwise the RE is considered to be forwarded
-	else if (generic_postprocess((DYMO_element *) re))
-	{
+	/*/ Node have a Route to destination
+	else if(re->a && entry && (entry->rt_state==RT_VALID) && (ntohl(re->target_seqnum) <= entry->rt_seqnum)){
+		struct in_addr target_addr;
+        node_addr.s_addr    = re->re_blocks[0].re_node_addr;
+        target_addr.s_addr  = target_addr.s_addr;
+		
+		//INC_SEQNUM(this_host.seqnum);
+		
+				
+		RE *rrep = re_create_rrep(
+				node_addr ,
+				ntohl(re->re_blocks[0].re_node_seqnum),
+				target_addr,
+				entry->rt_seqnum,
+				entry->rt_prefix,
+				entry->rt_is_gw,
+				NET_DIAMETER,
+				re->re_blocks[0].re_hopcnt+entry->rt_hopcnt);
+			
+		
+		rrep->re_blocks[1].g		= this_host.is_gw;
+		rrep->re_blocks[1].prefix		= this_host.prefix;
+		rrep->re_blocks[1].res		= 0;
+		rrep->re_blocks[1].re_hopcnt	= 0;
+		rrep->re_blocks[1].re_node_addr	=(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr ;
+		rrep->re_blocks[1].re_node_seqnum	= htonl(this_host.seqnum);
+		
+		rrep->re_blocks[0].re_hopcnt    = entry->rt_hopcnt;		
+		re_send_rrep(rrep);
+		
+				
+		//printf("%u receive a RREQ to %u \n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,re->target_addr);
+		
+	}
+	*/// Otherwise the RE is considered to be forwarded
+	else if (generic_postprocess((DYMO_element *) re))	{
 		if (!no_path_acc)
 		{
 			int n = re_numblocks(re);
@@ -282,8 +314,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 			// Else if this is a RREP
 			else
 			{
-				re->re_blocks[n].re_node_addr	=
-					(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr;
+				re->re_blocks[n].re_node_addr	= (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr;
 				re_forward_rrep_path_acc(re);
 			}
 		}
@@ -491,3 +522,5 @@ void NS_CLASS route_discovery(struct in_addr dest_addr){
 	timer_set_timeout(&pend_rreq->timer, RREQ_WAIT_TIME);
 	timer_add(&pend_rreq->timer);
 }
+
+

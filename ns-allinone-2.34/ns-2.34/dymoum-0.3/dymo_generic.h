@@ -55,7 +55,7 @@
 #endif	/* NS_PORT */
 
 /* Network diameter (in number of hops) */
-#define NET_DIAMETER	10
+#define NET_DIAMETER	30
 
 
 /* Generic DYMO element fixed struct */
