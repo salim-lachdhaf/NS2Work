@@ -14,7 +14,7 @@ BEGIN {
 #variable delais
 	packet_duration =0; 
 	NbConn=0;
-        highest_packet_id=0;
+        highest_packet_id=-1;
 #end variable delais
 }
 {
@@ -90,18 +90,13 @@ BEGIN {
  
 
 #Begin delais
+if ( event == "s" && level=="AGT" && pkt_id > highest_packet_id) {highest_packet_id = pkt_id;}
 
 if ( event == "s" && level=="AGT") { 
-         start_time[pkt_id] = time; 
-         if ( pkt_id > highest_packet_id ){
-	 	 	highest_packet_id = pkt_id;
-         }
+         start_time[pkt_id] = time;    
       } 
-if ( event == "r" && level=="AGT") { 
+else if ( event == "r" && level=="AGT") { 
          end_time[pkt_id] = time; 
-         if ( pkt_id > highest_packet_id ){
-	 	 	highest_packet_id = pkt_id;
-         }
       } 
     
 #end Delais
@@ -119,10 +114,11 @@ for ( packet_id = 0; packet_id <= highest_packet_id; packet_id++ ) {
        end = end_time[packet_id]; 
        if (start < end && end>0){
 			packet_duration += end - start; 
+			#printf("\n EndToEnd: %.3f ms\n", (end - start)*1000); 
 			NbConn++;
 	   } 
 } 
- printf("\n EndToEnd: %.3f\n", (packet_duration/NbConn)); 
+ printf("\n EndToEnd: %.3f ms\n", (packet_duration/NbConn)*1000); 
 
  
 }

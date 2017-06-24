@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;ns-2.34&apos;" deleteContents="false" description="Delete resource &apos;ns-2.34&apos;" element1="/ns-2.34" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1492298175930"/>
-</session>
