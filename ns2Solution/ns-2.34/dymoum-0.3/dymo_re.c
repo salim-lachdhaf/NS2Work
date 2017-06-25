@@ -294,8 +294,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 				NET_DIAMETER,
 				1);
 			
-		if (!no_path_acc)
-		{
+		if (!no_path_acc){
 			int n = re_numblocks(rrep);
 			
 			INC_SEQNUM(this_host.seqnum);
@@ -325,8 +324,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 				NET_DIAMETER,
 				re->re_blocks[0].re_hopcnt+entry->rt_hopcnt);
 		
-		if (!no_path_acc)
-		{
+		if (!no_path_acc){
 			int n = re_numblocks(rrep);
 			
 			INC_SEQNUM(this_host.seqnum);
@@ -365,8 +363,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 				NET_DIAMETER,
 				re->re_blocks[0].re_hopcnt+entry->rt_hopcnt);
 			
-		if (!no_path_acc)
-		{
+		if (!no_path_acc){
 			int n = re_numblocks(rrep);
 			
 			INC_SEQNUM(this_host.seqnum);
@@ -396,8 +393,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 				NET_DIAMETER,
 				re->re_blocks[0].re_hopcnt+entry->rt_hopcnt);
 		
-		if (!no_path_acc)
-		{
+		if (!no_path_acc){
 			int n = re_numblocks(rrep);
 			
 			INC_SEQNUM(this_host.seqnum);

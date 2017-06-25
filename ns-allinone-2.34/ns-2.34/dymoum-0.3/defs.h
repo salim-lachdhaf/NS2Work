@@ -84,6 +84,10 @@ struct host_info {
     u_int8_t		prefix : 7;	/* Prefix */
     u_int8_t		is_gw : 1;	/* Is this host a gateway? */
     int			nif;		/* Number of interfaces to broadcast on */
+	
+	bool BLACKHOLE; /*is a black hole*/
+	
+	
     struct dev_info	devs[DYMO_MAX_NR_INTERFACES];
 };
 

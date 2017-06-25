@@ -33,7 +33,7 @@
 #include <assert.h>
 
 
-#define RREQ_WAIT_TIME	1000
+#define RREQ_WAIT_TIME	500
 #define RREQ_TRIES	3
 
 #define RB_STALE	0
@@ -41,7 +41,6 @@
 #define RB_INFERIOR	2
 #define RB_FRESH	3
 #define RB_SELF_GEN	4
-
 
 
 /* Routing blocks advertised in a RE message */
@@ -94,6 +93,8 @@ typedef struct {	// FIXME: adjust byte ordering
  
 
 #ifndef NS_NO_DECLARATIONS
+
+
 
 /* Create a RREQ */
 RE *re_create_rreq(struct in_addr target_addr,

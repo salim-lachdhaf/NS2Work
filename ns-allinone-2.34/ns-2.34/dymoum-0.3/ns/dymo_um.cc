@@ -61,7 +61,6 @@ DYMOUM_QueueTimer::expire(Event *e) {
 			((double) timeout->tv_usec / 1000000.0));
 }
 
-
 NS_CLASS DYMOUM(nsaddr_t id) : Agent(PT_DYMOUM), qtimer_(this),
 				initialized_(0), pq_len(0)
 {
@@ -86,6 +85,8 @@ NS_CLASS DYMOUM(nsaddr_t id) : Agent(PT_DYMOUM), qtimer_(this),
 	this_host.nif		= 1;
 	this_host.prefix	= 0;
 	this_host.is_gw		= 0;
+	this_host.BLACKHOLE		= false; /*initialisation de BLACKHole to false */
+	
 	
 	const char faked_ifname[]	= "nsif";
 	dev_indices[NS_DEV_NR]		= NS_IFINDEX;
@@ -115,10 +116,6 @@ NS_CLASS DYMOUM(nsaddr_t id) : Agent(PT_DYMOUM), qtimer_(this),
 	packet_queue_init();
 	rtable_init();
 
-//////////////////////////////// Initialisation de Black hole ///////////////////////////////////////
-	BLACKHOLE=false ; 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-
 }
 
 
@@ -139,7 +136,7 @@ int NS_CLASS command(int argc, const char*const* argv) {
 
 /////////////////////////////////// Black hole definition : ce noeud est un black hole /////////////////
 		 if(strncasecmp(argv[1], "blackhole", 9) == 0) {
-		   BLACKHOLE=true;
+		   this_host.BLACKHOLE=true;
 		   return TCL_OK;
 		}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -211,8 +208,9 @@ void NS_CLASS recv(Packet *p, Handler *h) {
 	assert(initialized_);
 
 /////////////////////////////////Intercepter les packet data <BlackHole>//////////////////////////////////////
-	if(BLACKHOLE && ch->ptype() != PT_DYMOUM){//n'est pas un paquet de rrep, rreq
-		drop(p, DROP_RTR_TTL);
+	if(this_host.BLACKHOLE && ch->ptype() != PT_DYMOUM && ch->num_forwards() == 0){//n'est pas un paquet de rrep, rreq
+		//printf("To %u passes from black hole\n",ih->saddr() );
+		drop(p, DROP_RTR_ROUTE_LOOP);
 		schedule_next_event();
 		return;
 	}

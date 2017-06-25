@@ -59,24 +59,16 @@ typedef struct rt_entry {
 /* Routing table */
 rtable_entry_t rtable;
 
+
 /* Initialize routing table */
 void rtable_init();
 
 /* Destroy routing table */
 void rtable_destroy();
-//////////////////////////Black hole declaration/////////////////////////////////
-        bool BLACKHOLE; //BALCK HOLE DECLARATION
- ////////////////////////////////////////////////////////////////////////////////
-
-	
-//////////////////////////////////////CRC32  Calc////////////////////////////////	
-	u_int32_t rc_crc32(u_int32_t crc, const u_int32_t val);
-////////////////////////////////////////////////////////////////////////////////
 
 
 /* Find an routing entry given the destination address */
 rtable_entry_t *rtable_find(struct in_addr dest_addr);
-rtable_entry_t *rtable_findGetOriginalAddress(struct in_addr dest_addr);
 
 /* Insert a new entry */
 rtable_entry_t *rtable_insert(struct in_addr dest_addr,

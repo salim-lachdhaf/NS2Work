@@ -81,43 +81,42 @@ void NS_CLASS route_discovery_timeout(void *arg)
 {
 	pending_rreq_t *entry = (pending_rreq_t *) arg;
 	
+	
 	if (!entry)
 	{
-		dlog(LOG_WARNING, 0, __FUNCTION__,
-			"NULL pending route discovery list entry,"
-			" ignoring timeout");
+		dlog(LOG_WARNING, 0, __FUNCTION__,"NULL pending route discovery list entry, ignoring timeout");		
 		return;
 	}
 	
 	if (reissue_rreq)
 	{
 		if (entry->tries < RREQ_TRIES)
-		{
-			rtable_entry_t *rte;
-			
-			entry->tries++;
-			timer_set_timeout(&entry->timer,
-				RREQ_WAIT_TIME << entry->tries);
-			timer_add(&entry->timer);
-			
-			rte = rtable_find(entry->dest_addr);
-			if (rte)
-				re_send_rreq(entry->dest_addr, entry->seqnum,
-					rte->rt_hopcnt);
-			else
-				re_send_rreq(entry->dest_addr, entry->seqnum,
-					0);
-			
-			return;
-		}
+        {
+            rtable_entry_t *rte;
+
+            entry->tries++;
+            timer_set_timeout(&entry->timer,RREQ_WAIT_TIME << entry->tries);
+            timer_add(&entry->timer);
+
+            rte = rtable_find(entry->dest_addr);
+            if (rte)
+                re_send_rreq(entry->dest_addr, entry->seqnum,rte->rt_hopcnt);
+            else
+                re_send_rreq(entry->dest_addr, entry->seqnum,0);
+
+            return;
+        }
 	}
-#ifdef NS_PORT
-	packet_queue_set_verdict(entry->dest_addr, PQ_DROP);
-#else
-	netlink_no_route_found(entry->dest_addr);
-#endif	/* NS_PORT */
-	
+
+	#ifdef NS_PORT
+		packet_queue_set_verdict(entry->dest_addr, PQ_DROP);
+	#else
+		netlink_no_route_found(entry->dest_addr);
+	#endif	/* NS_PORT */
+
 	pending_rreq_remove(entry);
+	
+	
 }
 
 void NS_CLASS nb_timeout(void *arg)
