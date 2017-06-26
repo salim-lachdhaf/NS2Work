@@ -43,6 +43,7 @@
 #define RB_SELF_GEN	4
 
 
+
 /* Routing blocks advertised in a RE message */
 struct re_block {
 # if __BYTE_ORDER == __BIG_ENDIAN
@@ -94,8 +95,6 @@ typedef struct {	// FIXME: adjust byte ordering
 
 #ifndef NS_NO_DECLARATIONS
 
-
-
 /* Create a RREQ */
 RE *re_create_rreq(struct in_addr target_addr,
 		u_int32_t target_seqnum,
@@ -145,7 +144,6 @@ void re_forward_rrep_path_acc(RE *rrep);
 
 /* Implement route discovery */
 void route_discovery(struct in_addr dest_addr);
-
 
 /* Return the number of blocks contained inside a RE */
 static NS_INLINE int re_numblocks(RE *re)

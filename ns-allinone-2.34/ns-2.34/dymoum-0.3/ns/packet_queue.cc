@@ -64,7 +64,8 @@ NS_CLASS packet_queue_add(Packet *p, struct in_addr dest_addr)
 		}
 	}
 	
-	if ((pq = (struct packet_queue *) malloc(sizeof(struct packet_queue)))== NULL)
+	if ((pq = (struct packet_queue *) malloc(sizeof(struct packet_queue)))
+		== NULL)
 	{
 		dlog(LOG_ERR, errno, __FUNCTION__, "failed malloc()");
 		exit(EXIT_FAILURE);
@@ -104,9 +105,11 @@ NS_CLASS packet_queue_set_verdict(struct in_addr dest_addr, int verdict)
 					return -1;
 				
 				ch = HDR_CMN(pq->p);
-				ch->next_hop_ =	(nsaddr_t)entry->rt_nxthop_addr.s_addr;
+				ch->next_hop_ =
+					(nsaddr_t)entry->rt_nxthop_addr.s_addr;
 				
-				Scheduler::instance().schedule(target_, pq->p,	delay);
+				Scheduler::instance().schedule(target_, pq->p,
+					delay);
 				delay += ARP_DELAY;
 				break;
 				

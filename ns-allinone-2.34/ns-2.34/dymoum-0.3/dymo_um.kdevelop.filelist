@@ -48,5 +48,3 @@ blacklist.h
 blacklist.c
 dymo_nb.h
 dymo_nb.c
-work.h
-work.c

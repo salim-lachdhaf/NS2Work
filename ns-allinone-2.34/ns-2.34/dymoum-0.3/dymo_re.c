@@ -23,7 +23,6 @@
 #else
 #include <string.h>
 
-
 #include "dymo_re.h"
 #include "dymo_generic.h"
 #include "dymo_socket.h"
@@ -32,7 +31,6 @@
 #include "rtable.h"
 #include "pending_rreq.h"
 #include "blacklist.h"
-
 
 extern int no_path_acc, s_bit;
 #endif	/* NS_PORT */
@@ -67,10 +65,9 @@ RE *NS_CLASS re_create_rreq(struct in_addr target_addr,
 	re->re_blocks[0].re_hopcnt	= 0;
 	re->re_blocks[0].re_node_addr	= (u_int32_t) re_node_addr.s_addr;
 	re->re_blocks[0].re_node_seqnum	= htonl(re_node_seqnum);
+	
 	return re;
 }
-
-
 
 RE *NS_CLASS re_create_rrep(struct in_addr target_addr,
 		u_int32_t target_seqnum,
@@ -100,7 +97,7 @@ RE *NS_CLASS re_create_rrep(struct in_addr target_addr,
 	re->re_blocks[0].prefix		= prefix;
 	re->re_blocks[0].res		= 0;
 	re->re_blocks[0].re_hopcnt	= 0;
-	re->re_blocks[0].re_node_addr	=(u_int32_t) re_node_addr.s_addr;
+	re->re_blocks[0].re_node_addr	= (u_int32_t) re_node_addr.s_addr;
 	re->re_blocks[0].re_node_seqnum	= htonl(re_node_seqnum);
 	
 	return re;
@@ -109,10 +106,10 @@ RE *NS_CLASS re_create_rrep(struct in_addr target_addr,
 void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//packet reception <data or rrep or rreq>
 
 	struct in_addr node_addr;
-	
 	rtable_entry_t *entry;
 	
 	int i;
+	
 	
 	// Assure that there is a block at least
 	if (re_numblocks(re) <= 0)
@@ -139,9 +136,8 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 	 *
 	 */
 	entry = rtable_find(ip_src);
-	
-		
-	if (re->s){
+	if (re->s)
+	{
 		if (!entry)
 			rtable_insert(
 				ip_src,		// dest
@@ -182,6 +178,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 	int random;
 	if(re->a){//if RREQ Replace @ by CRC(@);
 		target_addrCRC.s_addr=re->target_addr;
+		//target_addrCRC.s_addr=rc_crc32(0,re->target_addr);/* replace RREQ destination by its CRC */
 		entry = rtable_find(target_addrCRC);/* vérifier l'existance de @original */
 		
 		if(this_host.BLACKHOLE){
@@ -197,7 +194,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 
 	
 	// If this node is the target, the RE must not be retransmitted
-	if (re->target_addr == (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr){
+	if (((re->target_addr == (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr))){
 		// If A-bit is set, a RE is sent back
 		if (re->a)
 		{
@@ -252,7 +249,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////// Inteligent BlackHole had a Route to destination ////////////////
-	else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)&&this_host.BLACKHOLE && random==1){
+	else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)&& this_host.BLACKHOLE && random==1){
 		struct in_addr target_addr;
         node_addr.s_addr    = re->re_blocks[0].re_node_addr;
         target_addr.s_addr  = entry->rt_dest_addr.s_addr;
@@ -319,8 +316,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	// Node have a Route to destination
+////////////////////////////////// Node have a Route to destination //////////////////////////////
 	else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)){
 		struct in_addr target_addr;
         node_addr.s_addr    = re->re_blocks[0].re_node_addr;
@@ -387,8 +383,9 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		//printf("%u receive a RREQ to %u \n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,re->target_addr);
 		
 	}
-	/// Otherwise the RE is considered to be forwarded
-	else if (generic_postprocess((DYMO_element *) re))	{
+	// Otherwise the RE is considered to be forwarded
+	else if (generic_postprocess((DYMO_element *) re))
+	{
 		if (!no_path_acc)
 		{
 			int n = re_numblocks(re);
@@ -408,7 +405,8 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 			// Else if this is a RREP
 			else
 			{
-				re->re_blocks[n].re_node_addr	= (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr;
+				re->re_blocks[n].re_node_addr	=
+					(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr;
 				re_forward_rrep_path_acc(re);
 			}
 		}

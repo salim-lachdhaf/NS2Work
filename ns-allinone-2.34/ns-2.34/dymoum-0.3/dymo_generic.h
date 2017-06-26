@@ -39,7 +39,7 @@
 
 /* Maximum number of DYMO messages per second which can be generated
    by a node */
-#define DYMO_RATELIMIT 10
+#define DYMO_RATELIMIT	10
 
 /* Macro for incrementing a sequence number */
 #define INC_SEQNUM(s) (s == 65535 ? s = 256 : s++)

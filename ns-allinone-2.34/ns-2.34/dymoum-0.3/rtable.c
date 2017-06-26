@@ -43,7 +43,6 @@ void NS_CLASS rtable_init()
 	INIT_DLIST_HEAD(&rtable.l);
 }
 
-
 void NS_CLASS rtable_destroy()
 {
 	dlist_head_t *pos, *tmp;
@@ -67,7 +66,6 @@ rtable_entry_t *NS_CLASS rtable_find(struct in_addr dest_addr)
 	}
 	return NULL;
 }
-
 
 rtable_entry_t *NS_CLASS rtable_insert(struct in_addr dest_addr,
 			struct in_addr nxthop_addr,

@@ -30,7 +30,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 
-#define ROUTE_TIMEOUT		5000 
+#define ROUTE_TIMEOUT		5000
 #define ROUTE_DELETE_TIMEOUT	(5 * ROUTE_TIMEOUT)
 
 #define RT_INVALID	0
@@ -59,16 +59,15 @@ typedef struct rt_entry {
 /* Routing table */
 rtable_entry_t rtable;
 
-
 /* Initialize routing table */
 void rtable_init();
 
 /* Destroy routing table */
 void rtable_destroy();
 
-
 /* Find an routing entry given the destination address */
 rtable_entry_t *rtable_find(struct in_addr dest_addr);
+
 
 /* Insert a new entry */
 rtable_entry_t *rtable_insert(struct in_addr dest_addr,
