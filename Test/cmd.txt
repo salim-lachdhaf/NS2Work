@@ -1,0 +1,4 @@
+
+python /home/ghost/work/sumo-0.25.0/tools/randomTrips.py -n map.net.xml -r map.rou.xml -e 20 -l
+sumo -c map.sumo.cfg --fcd-output map.sumo.xml
+python /home/ghost/work/sumo-0.25.0/tools/traceExporter.py --fcd-input map.sumo.xml --ns2config-output map.tcl --ns2mobility-output mobility.tcl --ns2activity-output activity.tcl

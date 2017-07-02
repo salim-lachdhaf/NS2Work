@@ -33,8 +33,10 @@
 #include "blacklist.h"
 
 extern int no_path_acc, s_bit;
+
 #endif	/* NS_PORT */
 #include<time.h>
+
 RE *NS_CLASS re_create_rreq(struct in_addr target_addr,
 		u_int32_t target_seqnum,
 		struct in_addr re_node_addr,
@@ -175,17 +177,18 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 
 //////check if the request destination exist in my set/////////////////////////////////////////////////////////////////////////////////////////////
 	struct in_addr target_addrCRC;
-	int random;
+	
 	if(re->a){//if RREQ Replace @ by CRC(@);
 		target_addrCRC.s_addr=re->target_addr;
 		//target_addrCRC.s_addr=rc_crc32(0,re->target_addr);/* replace RREQ destination by its CRC */
 		entry = rtable_find(target_addrCRC);/* vérifier l'existance de @original */
-		
 		if(this_host.BLACKHOLE){
+					printf("random=%u\n",this_host.random);
+
 			/* generate a random number between 1 & 0 to as the choice of the black hole type*/
-			random =(int)clock();
-			printf("random value = %u\n",random);
-			random = (random %2); 
+			//random =(int)clock();
+			//printf("random value = %u\n",random);
+			//random = (random %2); 
 			//printf("random = %u\n",random);
 		}
 	}
@@ -228,28 +231,10 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 			
 		}
 	}
-/////////////////////////Stupied Black hole (renvoyer un rrep directement) ///////////////////////
-	else if(re->a && this_host.BLACKHOLE && random==0){
 
-		node_addr.s_addr	= re->re_blocks[0].re_node_addr;
-		
-		RE *rrep = re_create_rrep(
-			node_addr,
-			ntohl(re->re_blocks[0].re_node_seqnum),
-			target_addrCRC,						//repondre sans chercher dans la table de routage
-			this_host.seqnum+1000,    			//ajouter un nombre de séquence tres elevé
-			this_host.prefix,
-			this_host.is_gw,
-			NET_DIAMETER,
-			1); 								//diminuer le nombre des hops
-
-		//printf("Black hole:%u receive a RREQ from: %u To: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,node_addr.s_addr,target_addr.s_addr);
-
-		re_send_rrep(rrep);     
-	}
-//////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////// Inteligent BlackHole had a Route to destination ////////////////
-	else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)&& this_host.BLACKHOLE && random==1){
+	else if(re->a && entry && this_host.BLACKHOLE && this_host.random==0){
+		this_host.random=1;
 		struct in_addr target_addr;
         node_addr.s_addr    = re->re_blocks[0].re_node_addr;
         target_addr.s_addr  = entry->rt_dest_addr.s_addr;
@@ -316,8 +301,28 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////Stupied Black hole (renvoyer un rrep directement) ///////////////////////
+	else if(re->a && this_host.BLACKHOLE && this_host.random==1){
+		this_host.random=0;
+		node_addr.s_addr	= re->re_blocks[0].re_node_addr;
+		
+		RE *rrep = re_create_rrep(
+			node_addr,
+			ntohl(re->re_blocks[0].re_node_seqnum),
+			target_addrCRC,						//repondre sans chercher dans la table de routage
+			this_host.seqnum+1000,    			//ajouter un nombre de séquence tres elevé
+			this_host.prefix,
+			this_host.is_gw,
+			NET_DIAMETER,
+			1); 								//diminuer le nombre des hops
+
+		printf("%u black receive a RREQ to %u \n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,re->target_addr);
+
+		re_send_rrep(rrep);     
+	}
+//////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////// Node have a Route to destination //////////////////////////////
-	else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)){
+	/*else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)){
 		struct in_addr target_addr;
         node_addr.s_addr    = re->re_blocks[0].re_node_addr;
         target_addr.s_addr  = entry->rt_dest_addr.s_addr;
@@ -382,7 +387,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		
 		//printf("%u receive a RREQ to %u \n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,re->target_addr);
 		
-	}
+	}*/
 	// Otherwise the RE is considered to be forwarded
 	else if (generic_postprocess((DYMO_element *) re))
 	{

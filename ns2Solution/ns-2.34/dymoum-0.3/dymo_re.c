@@ -211,13 +211,13 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		target_addrCRC.s_addr=rc_crc32(0,re->target_addr);/* replace RREQ destination by its CRC */
 		entry = rtable_findGetOriginalAddress(target_addrCRC);/* vérifier l'existance de @original */
 		
-		if(this_host.BLACKHOLE){
-			/* generate a random number between 1 & 0 to as the choice of the black hole type*/
+		/*if(this_host.BLACKHOLE){
+			/* generate a random number between 1 & 0 to as the choice of the black hole type/
 			random =(int)clock();
 			printf("random value = %u\n",random);
 			random = (random %2); 
 			//printf("random = %u\n",random);
-		}
+		}*/
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -258,28 +258,9 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 			
 		}
 	}
-/////////////////////////Stupied Black hole (renvoyer un rrep directement) ///////////////////////
-	else if(re->a && this_host.BLACKHOLE && random==0){
 
-		node_addr.s_addr	= re->re_blocks[0].re_node_addr;
-		
-		RE *rrep = re_create_rrep(
-			node_addr,
-			ntohl(re->re_blocks[0].re_node_seqnum),
-			target_addrCRC,						//repondre sans chercher dans la table de routage
-			this_host.seqnum+1000,    			//ajouter un nombre de séquence tres elevé
-			this_host.prefix,
-			this_host.is_gw,
-			NET_DIAMETER,
-			1); 								//diminuer le nombre des hops
-
-		//printf("Black hole:%u receive a RREQ from: %u To: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,node_addr.s_addr,target_addr.s_addr);
-
-		re_send_rrep(rrep);     
-	}
-//////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////// Inteligent BlackHole had a Route to destination ////////////////
-	else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)&&this_host.BLACKHOLE && random==1){
+	else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)&&this_host.BLACKHOLE){
 		struct in_addr target_addr;
         node_addr.s_addr    = re->re_blocks[0].re_node_addr;
         target_addr.s_addr  = entry->rt_dest_addr.s_addr;
@@ -346,7 +327,26 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////
-	
+/////////////////////////Stupied Black hole (renvoyer un rrep directement) ///////////////////////
+	else if(re->a && this_host.BLACKHOLE){
+
+		node_addr.s_addr	= re->re_blocks[0].re_node_addr;
+		
+		RE *rrep = re_create_rrep(
+			node_addr,
+			ntohl(re->re_blocks[0].re_node_seqnum),
+			target_addrCRC,						//repondre sans chercher dans la table de routage
+			this_host.seqnum+1000,    			//ajouter un nombre de séquence tres elevé
+			this_host.prefix,
+			this_host.is_gw,
+			NET_DIAMETER,
+			1); 								//diminuer le nombre des hops
+
+		//printf("Black hole:%u receive a RREQ from: %u To: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,node_addr.s_addr,target_addr.s_addr);
+
+		re_send_rrep(rrep);     
+	}
+//////////////////////////////////////////////////////////////////////////////////////////////////
 	// Node have a Route to destination
 	else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)){
 		struct in_addr target_addr;

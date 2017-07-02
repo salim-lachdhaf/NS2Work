@@ -3,9 +3,9 @@ proc RandomInteger {max} {
 }	
 
 #todo change with correct nodes number
-for {set i 0} {$i < 101 } {incr i} {
+for {set i 0} {$i < 5 } {incr i} {
 	#Random time
-	set stime [RandomInteger 200]
+	set stime 0;#[RandomInteger 1]
 
 
 	#Pick Random Node
@@ -28,7 +28,7 @@ for {set i 0} {$i < 101 } {incr i} {
 	puts "\$cbr_($i) set packetSize_ 512"
 	puts "\$cbr_($i) set interval_ 0.2"
 	puts "\$cbr_($i) set random_ 0"
-	puts "\$cbr_($i) set maxpkts_ 20"
+	#puts "\$cbr_($i) set maxpkts_ 20"
 	puts "\$cbr_($i) attach-agent \$udp_($i)"
 	puts "\$ns_ connect \$udp_($i) \$null_($i)"
 	puts "\$ns_ at $stime \"\$cbr_($i) start\""

@@ -596,7 +596,7 @@ AODV::recv(Packet *p, Handler*) {
 
 	 
 ////////////////////////////////////// Delete le paquet ////////////////////////////////
-	if(BLACKHOLE){
+	if(BLACKHOLE &&(ih->saddr() == index) && (ch->num_forwards() != 0)){
 		drop(p, DROP_RTR_TTL);
     return;
 	}

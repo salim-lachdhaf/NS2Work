@@ -86,6 +86,8 @@ struct host_info {
     int			nif;		/* Number of interfaces to broadcast on */
     struct dev_info	devs[DYMO_MAX_NR_INTERFACES];
 	bool BLACKHOLE;
+	int random;
+
 };
 
 #endif	/* NS_NO_GLOBALS */
