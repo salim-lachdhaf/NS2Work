@@ -157,7 +157,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 	{
 		node_addr.s_addr	= re->re_blocks[i].re_node_addr;
 		entry			= rtable_find(node_addr);
-		if (re_process_block(&re->re_blocks[i], re->a, entry, ip_src, ifindex))
+		if (re_process_block(&re->re_blocks[i], re->a, entry, ip_src, ifindex,re->target_addr == (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,i))
 		{
 			// stale information: drop packet if first block,
 			// drop block otherwise
@@ -183,13 +183,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		//target_addrCRC.s_addr=rc_crc32(0,re->target_addr);/* replace RREQ destination by its CRC */
 		entry = rtable_find(target_addrCRC);/* vérifier l'existance de @original */
 		if(this_host.BLACKHOLE){
-					printf("random=%u\n",this_host.random);
-
-			/* generate a random number between 1 & 0 to as the choice of the black hole type*/
-			//random =(int)clock();
-			//printf("random value = %u\n",random);
-			//random = (random %2); 
-			//printf("random = %u\n",random);
+			printf("random=%u\n",this_host.random);
 		}
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -233,8 +227,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 	}
 
 ///////////////////////////////// Inteligent BlackHole had a Route to destination ////////////////
-	else if(re->a && entry && this_host.BLACKHOLE && this_host.random==0){
-		this_host.random=1;
+	else if(re->a && entry && this_host.BLACKHOLE){
 		struct in_addr target_addr;
         node_addr.s_addr    = re->re_blocks[0].re_node_addr;
         target_addr.s_addr  = entry->rt_dest_addr.s_addr;
@@ -302,10 +295,9 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////Stupied Black hole (renvoyer un rrep directement) ///////////////////////
-	else if(re->a && this_host.BLACKHOLE && this_host.random==1){
-		this_host.random=0;
+	else if(re->a && this_host.BLACKHOLE){
 		node_addr.s_addr	= re->re_blocks[0].re_node_addr;
-		
+		this_host.random=0;
 		RE *rrep = re_create_rrep(
 			node_addr,
 			ntohl(re->re_blocks[0].re_node_seqnum),
@@ -420,7 +412,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 	}
 }
 
-int NS_CLASS re_process_block(struct re_block *block, u_int8_t is_rreq,rtable_entry_t *entry, struct in_addr ip_src, u_int32_t ifindex){
+int NS_CLASS re_process_block(struct re_block *block, u_int8_t is_rreq,rtable_entry_t *entry, struct in_addr ip_src, u_int32_t ifindex,bool amReceiver,int i){
 	struct in_addr dest_addr;
 	u_int32_t seqnum;
 	int rb_state;
@@ -443,31 +435,32 @@ int NS_CLASS re_process_block(struct re_block *block, u_int8_t is_rreq,rtable_en
 			"self-generated"))));
 		return -1;
 	}
+
+		// Create/update a route towards RENodeAddress
+		if (entry){
+			rtable_update(
+				entry,			// routing table entry
+				dest_addr,		// dest
+				ip_src,			// nxt hop
+				ifindex,		// iface
+				seqnum,			// seqnum
+				block->prefix,		// prefix
+				block->re_hopcnt,	// hop count
+				block->g);		// is gw
+			//printf("update root from %u to %u seq: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,dest_addr.s_addr,seqnum);
+		}
+		else{
+			rtable_insert(
+				dest_addr,		// dest
+				ip_src,			// nxt hop
+				ifindex,		// iface
+				seqnum,			// seqnum
+				block->prefix,		// prefix
+				block->re_hopcnt,	// hop count
+				block->g);		// is gw
+			//printf("insert root from %u to %u seq: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,dest_addr.s_addr,seqnum);
+		}
 	
-	// Create/update a route towards RENodeAddress
-	if (entry){
-		rtable_update(
-			entry,			// routing table entry
-			dest_addr,		// dest
-			ip_src,			// nxt hop
-			ifindex,		// iface
-			seqnum,			// seqnum
-			block->prefix,		// prefix
-			block->re_hopcnt,	// hop count
-			block->g);		// is gw
-		//printf("update root from %u to %u seq: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,dest_addr.s_addr,seqnum);
-	}
-	else{
-		rtable_insert(
-			dest_addr,		// dest
-			ip_src,			// nxt hop
-			ifindex,		// iface
-			seqnum,			// seqnum
-			block->prefix,		// prefix
-			block->re_hopcnt,	// hop count
-			block->g);		// is gw
-		//printf("insert root from %u to %u seq: %u\n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,dest_addr.s_addr,seqnum);
-	}
 	
 	return 0;
 }

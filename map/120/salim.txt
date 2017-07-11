@@ -1,0 +1,1443 @@
+Starting Simulation...
+num_nodes is set 120
+channel.cc:sendUp - Calc highestAntennaZ_ and distCST_
+highestAntennaZ_ = 1.5,  distCST_ = 550.0
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 blNS EXITING...
+ack receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 70 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 50 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 5 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 
+random=0
+0 black receive a RREQ to 25 

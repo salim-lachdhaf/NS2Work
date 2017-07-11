@@ -5,15 +5,15 @@ proc RandomInteger {max} {
 #todo change with correct nodes number
 for {set i 0} {$i < 5 } {incr i} {
 	#Random time
-	set stime 0;#[RandomInteger 1]
+	set stime 0;#[RandomInteger 200]
 
 
 	#Pick Random Node
-	set randomNode [RandomInteger 101];#todo change with correct nodes number
+	set randomNode [RandomInteger 199];#todo change with correct nodes number
 
 	#choisir random node <> to the source (i)
 	while { $randomNode== $i } {
-		set randomNode [RandomInteger 101];#todo change with correct nodes number
+		set randomNode [RandomInteger 199];#todo change with correct nodes number
 	} 
 
 	 #puts "$i connect to $randomNode at $stime"

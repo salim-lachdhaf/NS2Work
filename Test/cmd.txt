@@ -1,3 +1,11 @@
+netconvert --osm-files map.osm -o map.net.xml
+cp osmPolyconvert.osm to the folder
+polyconvert --osm-files map.osm --net-file map.net.xml --type-file osmNetconvert.typ.xml -o map.poly.xml
+
+
+
+
+
 
 python /home/ghost/work/sumo-0.25.0/tools/randomTrips.py -n map.net.xml -r map.rou.xml -e 20 -l
 sumo -c map.sumo.cfg --fcd-output map.sumo.xml

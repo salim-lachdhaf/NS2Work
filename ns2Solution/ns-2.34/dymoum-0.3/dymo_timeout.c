@@ -87,8 +87,6 @@ void NS_CLASS route_discovery_timeout(void *arg)
 	this_host.MaxSeq              = 0;      /* ini Max Sq nb received */
 	this_host.MinSeq              = 65535;  /* ini Min Sq Nb Received */
 
-	RREQ_remove();                          // Effacer les Padding REREQs//
-	rtable_destroyRREP();                   //Effacer les RREP sauvgarder
 	
 	if (!entry)
 	{

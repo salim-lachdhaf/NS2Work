@@ -120,7 +120,9 @@ int re_process_block(struct re_block *block,
 		u_int8_t is_rreq,
 		rtable_entry_t *entry,
 		struct in_addr ip_src,
-		u_int32_t ifindex);
+		u_int32_t ifindex,
+					bool amReceiver,
+					int i);
 
 /* Auxilliary function, do not use */
 void __re_send(RE *re);

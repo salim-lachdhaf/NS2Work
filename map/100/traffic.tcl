@@ -4,7 +4,7 @@
 set udp_(0) [new Agent/UDP]
 $ns_ attach-agent $node_(0) $udp_(0)
 set null_(0) [new Agent/Null]
-$ns_ attach-agent $node_(31) $null_(0)
+$ns_ attach-agent $node_(90) $null_(0)
 set cbr_(0) [new Application/Traffic/CBR]
 $cbr_(0) set packetSize_ 512
 $cbr_(0) set interval_ 0.2
@@ -18,7 +18,7 @@ $ns_ at 0 "$cbr_(0) start"
 set udp_(1) [new Agent/UDP]
 $ns_ attach-agent $node_(1) $udp_(1)
 set null_(1) [new Agent/Null]
-$ns_ attach-agent $node_(75) $null_(1)
+$ns_ attach-agent $node_(70) $null_(1)
 set cbr_(1) [new Application/Traffic/CBR]
 $cbr_(1) set packetSize_ 512
 $cbr_(1) set interval_ 0.2
@@ -32,7 +32,7 @@ $ns_ at 0 "$cbr_(1) start"
 set udp_(2) [new Agent/UDP]
 $ns_ attach-agent $node_(2) $udp_(2)
 set null_(2) [new Agent/Null]
-$ns_ attach-agent $node_(28) $null_(2)
+$ns_ attach-agent $node_(50) $null_(2)
 set cbr_(2) [new Application/Traffic/CBR]
 $cbr_(2) set packetSize_ 512
 $cbr_(2) set interval_ 0.2
@@ -46,7 +46,7 @@ $ns_ at 0 "$cbr_(2) start"
 set udp_(3) [new Agent/UDP]
 $ns_ attach-agent $node_(3) $udp_(3)
 set null_(3) [new Agent/Null]
-$ns_ attach-agent $node_(51) $null_(3)
+$ns_ attach-agent $node_(25) $null_(3)
 set cbr_(3) [new Application/Traffic/CBR]
 $cbr_(3) set packetSize_ 512
 $cbr_(3) set interval_ 0.2
@@ -60,7 +60,7 @@ $ns_ at 0 "$cbr_(3) start"
 set udp_(4) [new Agent/UDP]
 $ns_ attach-agent $node_(4) $udp_(4)
 set null_(4) [new Agent/Null]
-$ns_ attach-agent $node_(15) $null_(4)
+$ns_ attach-agent $node_(5) $null_(4)
 set cbr_(4) [new Application/Traffic/CBR]
 $cbr_(4) set packetSize_ 512
 $cbr_(4) set interval_ 0.2

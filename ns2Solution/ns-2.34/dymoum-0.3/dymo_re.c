@@ -67,7 +67,6 @@ RE *NS_CLASS re_create_rreq(struct in_addr target_addr,
 	re->re_blocks[0].re_hopcnt	= 0;
 	re->re_blocks[0].re_node_addr	= (u_int32_t) re_node_addr.s_addr;
 	re->re_blocks[0].re_node_seqnum	= htonl(re_node_seqnum);
-	RREQ_add(target_addr);
 	return re;
 }
 
@@ -155,7 +154,9 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		icmp_reply_send(ip_src, &DEV_IFINDEX(ifindex));
 	}
 	
-	if(!re->a && re->target_addr == (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr){/* remove the false response from stupied blackhole */
+	struct in_addr target_addr;
+	node_addr.s_addr	= re->re_blocks[0].re_node_addr;
+	if(pending_rreq_find(node_addr)&&!re->a && re->target_addr == (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr){/* remove the false response from stupied blackhole */
 		if (re->re_blocks[0].re_node_seqnum > this_host.MaxSeq) this_host.MaxSeq =re->re_blocks[0].re_node_seqnum;
 		if (re->re_blocks[0].re_node_seqnum < this_host.MinSeq) this_host.MinSeq =re->re_blocks[0].re_node_seqnum;
 		this_host.NbRREP++;
@@ -167,17 +168,6 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		target_addr.s_addr	=  (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr;//re->target_addr;envoyer l'adresse originale sans CRC
 		target_seqnum		= ntohl(re->target_seqnum);
 		printf("%u) Target Node:%u receive a RREP from: %u, max:%u,min:%u,MOY=%u\n",this_host.NbRREP,(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,node_addr.s_addr,this_host.MaxSeq,this_host.MinSeq,(this_host.MaxSeq-this_host.MinSeq)/this_host.NbRREP);
-
-		rtable_insertRREP(
-			node_addr,		// dest
-			ip_src,			// nxt hop
-			ifindex,		// iface
-			ntohl(re->re_blocks[0].re_node_seqnum),			// seqnum
-			re->re_blocks[0].prefix,		// prefix
-			re->re_blocks[0].re_hopcnt,	// hop count
-			re->re_blocks[0].g);	
-
-		find_BestRREP(node_addr);
 	}
 	
 	// Process blocks
@@ -205,19 +195,10 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 
 //////check if the request destination exist in my set/////////////////////////////////////////////////////////////////////////////////////////////
 	struct in_addr target_addrCRC;
-	int random;
 	if(re->a){//if RREQ Replace @ by CRC(@);
 		//target_addrCRC.s_addr=re->target_addr;
 		target_addrCRC.s_addr=rc_crc32(0,re->target_addr);/* replace RREQ destination by its CRC */
 		entry = rtable_findGetOriginalAddress(target_addrCRC);/* vérifier l'existance de @original */
-		
-		/*if(this_host.BLACKHOLE){
-			/* generate a random number between 1 & 0 to as the choice of the black hole type/
-			random =(int)clock();
-			printf("random value = %u\n",random);
-			random = (random %2); 
-			//printf("random = %u\n",random);
-		}*/
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -260,7 +241,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 	}
 
 ///////////////////////////////// Inteligent BlackHole had a Route to destination ////////////////
-	else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)&&this_host.BLACKHOLE){
+	else if(re->a && entry && this_host.BLACKHOLE){
 		struct in_addr target_addr;
         node_addr.s_addr    = re->re_blocks[0].re_node_addr;
         target_addr.s_addr  = entry->rt_dest_addr.s_addr;
@@ -295,41 +276,12 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		re_send_rrep(rrep);
 	
 		
-		rrep = re_create_rrep(
-				target_addr,
-				entry->rt_seqnum,
-				node_addr ,
-				ntohl(re->re_blocks[0].re_node_seqnum),
-				re->re_blocks[0].prefix,
-				re->re_blocks[0].g,
-				NET_DIAMETER,
-				re->re_blocks[0].re_hopcnt+entry->rt_hopcnt);
-		
-		if (!no_path_acc){
-			int n = re_numblocks(rrep);
-			
-			INC_SEQNUM(this_host.seqnum);
-			re->re_blocks[n].g		= this_host.is_gw;
-			re->re_blocks[n].prefix		= this_host.prefix;
-			re->re_blocks[n].res		= 0;
-			re->re_blocks[n].re_hopcnt	= 0;
-			re->re_blocks[n].re_node_seqnum	= htonl(this_host.seqnum);
-			re->re_blocks[n].re_node_addr	= (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr;
-			
-			re->len += RE_BLOCK_SIZE;
-		}
-		
-		rrep->re_blocks[0].re_hopcnt    =0;
-		
-		re_send_rrep(rrep);	
-		
 		printf("%u receive a RREQ to %u \n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,re->target_addr);
 		
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////Stupied Black hole (renvoyer un rrep directement) ///////////////////////
 	else if(re->a && this_host.BLACKHOLE){
-
 		node_addr.s_addr	= re->re_blocks[0].re_node_addr;
 		
 		RE *rrep = re_create_rrep(
@@ -348,7 +300,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////
 	// Node have a Route to destination
-	else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)){
+	/*else if(re->a && entry && (ntohl(re->target_seqnum) <= entry->rt_seqnum) && (entry->rt_state==RT_VALID)){
 		struct in_addr target_addr;
         node_addr.s_addr    = re->re_blocks[0].re_node_addr;
         target_addr.s_addr  = entry->rt_dest_addr.s_addr;
@@ -413,7 +365,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		
 		//printf("%u receive a RREQ to %u \n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,re->target_addr);
 		
-	}
+	}*/
 	/// Otherwise the RE is considered to be forwarded
 	else if (generic_postprocess((DYMO_element *) re))	{
 		if (!no_path_acc)
@@ -469,7 +421,7 @@ int NS_CLASS re_process_block(struct re_block *block, u_int8_t is_rreq,rtable_en
 	}
 	
 	if(!is_rreq && (this_host.NbRREP>0) && (((this_host.MaxSeq-this_host.MinSeq)/this_host.NbRREP)>1)&& i==0 && amReceiver){/* test for the threshold */
-		printf("Threshold passed\n");
+		printf("Threshold passed Or False replay\n");
 		this_host.MaxSeq              = 0; 
 	}else{
 
@@ -705,115 +657,3 @@ rtable_entry_t *NS_CLASS rtable_findGetOriginalAddress(struct in_addr dest_addr)
 	return NULL;
 }
 /////////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////Insert received RREPs/////////////////////////////////////
-rtable_entry_t *NS_CLASS rtable_insertRREP(struct in_addr dest_addr,	struct in_addr nxthop_addr,	u_int32_t ifindex,u_int32_t seqnum,	u_int8_t prefix,u_int8_t hopcnt,u_int8_t is_gw){
-	rtable_entry_t *entry;
-	
-	// Create the new entry
-	if ((entry = (rtable_entry_t *) malloc(sizeof(rtable_entry_t)))	== NULL)
-	{
-		exit(EXIT_FAILURE);
-	}
-	memset(entry, 0, sizeof(rtable_entry_t));
-	
-	entry->rt_ifindex	= ifindex;
-	entry->rt_seqnum	= seqnum;
-	entry->rt_prefix	= prefix;
-	entry->rt_hopcnt	= hopcnt;
-	entry->rt_is_gw		= is_gw;
-	entry->rt_is_used	= 0;
-	entry->rt_state		= RT_VALID;
-	entry->rt_dest_addr.s_addr	= dest_addr.s_addr;
-	entry->rt_nxthop_addr.s_addr	= nxthop_addr.s_addr;
-	
-	
-	// Add the entry to the routing table
-	dlist_add(&entry->l, &receivedRREP.l);
-
-	return entry;
-}
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////Destroy the RREP store table///////////////////////////////
-void NS_CLASS rtable_destroyRREP(){
-	
-	dlist_head_t *pos, *tmp;
-	
-	dlist_for_each_safe(pos, tmp, &receivedRREP.l)
-	{
-		rtable_entry_t *e = (rtable_entry_t *) pos;
-		if (!e)
-			return;
-		dlist_del(&e->l);
-		free(e);
-	}
-}
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-/////////////////////////////////Get the Best Route From RREP Table//////////////////////////
-rtable_entry_t *NS_CLASS find_BestRREP(struct in_addr dest_addr){
-	dlist_head_t *pos;
-	
-	dlist_for_each(pos, &rtable.l)
-	{
-		rtable_entry_t *e = (rtable_entry_t *) pos;
-		/*if (e->rt_dest_addr.s_addr == dest_addr.s_addr)
-			return e;*/
-		printf("RREP TABLE: %u\n",e->rt_dest_addr.s_addr);
-	}
-	return NULL;
-}
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////Insert sent RREQs/////////////////////////////////////////
-rtable_entry_t *NS_CLASS RREQ_add(struct in_addr dest_addr){
-	rtable_entry_t *entry;
-	
-	// Create the new entry
-	if ((entry = (rtable_entry_t *) malloc(sizeof(rtable_entry_t)))	== NULL)
-	{
-		exit(EXIT_FAILURE);
-	}
-	memset(entry, 0, sizeof(rtable_entry_t));
-	
-	entry->rt_dest_addr.s_addr	= dest_addr.s_addr;
-	
-	
-	// Add the entry to the routing table
-	dlist_add(&entry->l, &sentRREQ.l);
-
-	return entry;
-}
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////Destroy the RREQ store table///////////////////////////////
-void NS_CLASS RREQ_remove(){
-	
-	dlist_head_t *pos, *tmp;
-	
-	dlist_for_each_safe(pos, tmp, &sentRREQ.l)
-	{
-		rtable_entry_t *e = (rtable_entry_t *) pos;
-		if (!e)
-			return;
-		dlist_del(&e->l);
-		free(e);
-	}
-}
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////CHECK A RREP IS VALID OR NOT (is there any RREQ sent to received reply)///////
-rtable_entry_t *NS_CLASS RREQ_find(struct in_addr dest_addr){
-	dlist_head_t *pos;
-	
-	dlist_for_each(pos, &sentRREQ.l)
-	{
-		rtable_entry_t *e = (rtable_entry_t *) pos;
-		if (e->rt_dest_addr.s_addr == dest_addr.s_addr)
-			return e;
-		//printf("RREP TABLE: %u\n",e->rt_dest_addr.s_addr);
-	}
-	return NULL;
-}
-///////////////////////////////////////////////////////////////////////////////////////////

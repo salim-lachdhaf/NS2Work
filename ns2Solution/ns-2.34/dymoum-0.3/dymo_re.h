@@ -33,7 +33,7 @@
 #include <assert.h>
 
 
-#define RREQ_WAIT_TIME	500
+#define RREQ_WAIT_TIME	1000
 #define RREQ_TRIES	3
 
 #define RB_STALE	0
@@ -95,30 +95,6 @@ typedef struct {	// FIXME: adjust byte ordering
 #ifndef NS_NO_DECLARATIONS
 
 ///////////My Declaaration/////////////////
-
-rtable_entry_t receivedRREP; 
-
-
-rtable_entry_t sentRREQ; 
-
-
-rtable_entry_t *rtable_insertRREP(struct in_addr dest_addr,	struct in_addr nxthop_addr,	u_int32_t ifindex,u_int32_t seqnum,	u_int8_t prefix,u_int8_t hopcnt,u_int8_t is_gw);
-
-
-rtable_entry_t *find_BestRREP(struct in_addr dest_addr);
-
-
-void rtable_destroyRREP();
-
-/* Add a new entry to the list */
-rtable_entry_t *RREQ_add(struct in_addr dest_addr);
-
-/* Remove an entry from the list */
-void RREQ_remove();
-
-/* Find an entry in the list with the given destination address */
-rtable_entry_t *RREQ_find(struct in_addr dest_addr);
-
 
 u_int32_t rc_crc32(u_int32_t crc, const u_int32_t val);//crc
 

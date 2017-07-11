@@ -89,6 +89,7 @@ NS_CLASS DYMOUM(nsaddr_t id) : Agent(PT_DYMOUM), qtimer_(this),
 	this_host.NbRREP		= 0; /* ini RREP compting */
 	this_host.MaxSeq              = 0;  /* ini Max Sq nb received */
     this_host.MinSeq              = 65535;  /* ini Min Sq Nb Received */
+	this_host.random=0;
 	
 	const char faked_ifname[]	= "nsif";
 	dev_indices[NS_DEV_NR]		= NS_IFINDEX;

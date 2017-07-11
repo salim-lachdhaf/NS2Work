@@ -41,8 +41,6 @@
 void NS_CLASS rtable_init()
 {
 	INIT_DLIST_HEAD(&rtable.l);
-	INIT_DLIST_HEAD(&receivedRREP.l);
-	INIT_DLIST_HEAD(&sentRREQ.l);
 }
 
 

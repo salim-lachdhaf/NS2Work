@@ -2,727 +2,215 @@ Starting Simulation...
 num_nodes is set 100
 channel.cc:sendUp - Calc highestAntennaZ_ and distCST_
 highestAntennaZ_ = 1.5,  distCST_ = 550.0
-1) Target Node:2 receive a RREP from: 28, max:2,min:2,MOY=0
-RREP TABLE: 1
-RREP TABLE: 4
-1) Target Node:1 receive a RREP from: 2272098024, max:1001,min:1001,MOY=0
-RREP TABLE: 3
-RREP TABLE: 0
-1) Target Node:3 receive a RREP from: 2989936755, max:1001,min:1001,MOY=0
-RREP TABLE: 0
-RREP TABLE: 1
-1) Target Node:31 receive a RREP from: 0, max:3,min:3,MOY=0
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-2) Target Node:31 receive a RREP from: 0, max:3,min:3,MOY=0
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-1) Target Node:0 receive a RREP from: 31, max:3,min:3,MOY=0
-RREP TABLE: 3
-RREP TABLE: 1
-2) Target Node:0 receive a RREP from: 31, max:3,min:3,MOY=0
-RREP TABLE: 31
-RREP TABLE: 3
-RREP TABLE: 1
-1) Target Node:3 receive a RREP from: 51, max:3,min:3,MOY=0
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-1) Target Node:75 receive a RREP from: 1, max:4,min:4,MOY=0
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-1) Target Node:1 receive a RREP from: 75, max:3,min:3,MOY=0
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-1) Target Node:51 receive a RREP from: 3, max:4,min:4,MOY=0
-RREP TABLE: 3
-RREP TABLE: 1
-RREP TABLE: 0
-2) Target Node:75 receive a RREP from: 1, max:4,min:4,MOY=0
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-2) Target Node:51 receive a RREP from: 3, max:4,min:4,MOY=0
-RREP TABLE: 3
-RREP TABLE: 1
-RREP TABLE: 0
-2) Target Node:1 receive a RREP from: 2272098024, max:1001,min:3,MOY=499
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-3) Target Node:1 receive a RREP from: 75, max:1001,min:3,MOY=332
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-Threshold passed
-3) Target Node:51 receive a RREP from: 3, max:6,min:4,MOY=0
-RREP TABLE: 3
-RREP TABLE: 1
-RREP TABLE: 0
-1) Target Node:3 receive a RREP from: 51, max:3,min:3,MOY=0
-RREP TABLE: 51
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-4) Target Node:51 receive a RREP from: 3, max:6,min:4,MOY=0
-RREP TABLE: 3
-RREP TABLE: 1
-RREP TABLE: 0
-5) Target Node:51 receive a RREP from: 3, max:6,min:4,MOY=0
-RREP TABLE: 3
-RREP TABLE: 1
-RREP TABLE: 0
-2) Target Node:3 receive a RREP from: 2989936755, max:1001,min:3,MOY=499
-RREP TABLE: 51
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-Threshold passed
-3) Target Node:3 receive a RREP from: 51, max:3,min:3,MOY=0
-RREP TABLE: 51
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-6) Target Node:51 receive a RREP from: 3, max:7,min:4,MOY=0
-RREP TABLE: 3
-RREP TABLE: 1
-RREP TABLE: 0
-1) Target Node:4 receive a RREP from: 3510096238, max:1001,min:1001,MOY=0
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-1) Target Node:15 receive a RREP from: 4, max:5,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-2) Target Node:15 receive a RREP from: 4, max:5,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-3) Target Node:15 receive a RREP from: 4, max:5,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-2) Target Node:4 receive a RREP from: 15, max:1001,min:2,MOY=499
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-Threshold passed
-4) Target Node:15 receive a RREP from: 4, max:5,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-3) Target Node:4 receive a RREP from: 15, max:3,min:2,MOY=0
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-4) Target Node:4 receive a RREP from: 3510096238, max:1001,min:2,MOY=249
-RREP TABLE: 15
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-Threshold passed
-1) Target Node:4 receive a RREP from: 3510096238, max:1001,min:1001,MOY=0
-RREP TABLE: 15
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-2) Target Node:4 receive a RREP from: 15, max:1001,min:4,MOY=498
-RREP TABLE: 15
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-Threshold passed
-5) Target Node:15 receive a RREP from: 4, max:8,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-6) Target Node:15 receive a RREP from: 4, max:8,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-7) Target Node:15 receive a RREP from: 4, max:8,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-8) Target Node:15 receive a RREP from: 4, max:8,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-4) Target Node:1 receive a RREP from: 75, max:3,min:3,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-3) Target Node:75 receive a RREP from: 1, max:5,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-4) Target Node:75 receive a RREP from: 1, max:5,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-5) Target Node:75 receive a RREP from: 1, max:5,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-5) Target Node:1 receive a RREP from: 75, max:4,min:3,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-6) Target Node:1 receive a RREP from: 75, max:4,min:3,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-6) Target Node:75 receive a RREP from: 1, max:5,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-7) Target Node:1 receive a RREP from: 75, max:4,min:3,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-4) Target Node:3 receive a RREP from: 51, max:4,min:3,MOY=0
-RREP TABLE: 4
-RREP TABLE: 51
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-7) Target Node:51 receive a RREP from: 3, max:8,min:4,MOY=0
-RREP TABLE: 4
-RREP TABLE: 3
-RREP TABLE: 1
-RREP TABLE: 0
-9) Target Node:15 receive a RREP from: 4, max:9,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-10) Target Node:15 receive a RREP from: 4, max:9,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-11) Target Node:15 receive a RREP from: 4, max:9,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-12) Target Node:15 receive a RREP from: 4, max:9,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-1) Target Node:4 receive a RREP from: 15, max:4,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-13) Target Node:15 receive a RREP from: 4, max:9,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-14) Target Node:15 receive a RREP from: 4, max:9,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-15) Target Node:15 receive a RREP from: 4, max:9,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-2) Target Node:4 receive a RREP from: 15, max:4,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-16) Target Node:15 receive a RREP from: 4, max:9,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-17) Target Node:15 receive a RREP from: 4, max:9,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-3) Target Node:4 receive a RREP from: 15, max:4,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-4) Target Node:4 receive a RREP from: 15, max:4,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-7) Target Node:75 receive a RREP from: 1, max:6,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-8) Target Node:75 receive a RREP from: 1, max:6,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-8) Target Node:1 receive a RREP from: 75, max:4,min:3,MOY=0
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-9) Target Node:1 receive a RREP from: 75, max:5,min:3,MOY=0
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-10) Target Node:1 receive a RREP from: 75, max:5,min:3,MOY=0
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-11) Target Node:1 receive a RREP from: 2272098024, max:1001,min:3,MOY=90
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-Threshold passed
-12) Target Node:1 receive a RREP from: 2272098024, max:1001,min:3,MOY=83
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-Threshold passed
-3) Target Node:0 receive a RREP from: 31, max:4,min:3,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 3
-RREP TABLE: 1
-5) Target Node:4 receive a RREP from: 15, max:4,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-6) Target Node:4 receive a RREP from: 3510096238, max:1001,min:4,MOY=166
-RREP TABLE: 15
-RREP TABLE: 3510096238
-RREP TABLE: 3
-RREP TABLE: 0
-RREP TABLE: 1
-RREP TABLE: 2
-Threshold passed
-18) Target Node:15 receive a RREP from: 4, max:10,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-19) Target Node:15 receive a RREP from: 4, max:10,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-20) Target Node:15 receive a RREP from: 4, max:10,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-21) Target Node:15 receive a RREP from: 4, max:10,min:5,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-13) Target Node:1 receive a RREP from: 2272098024, max:1001,min:3,MOY=76
-RREP TABLE: 31
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-Threshold passed
-9) Target Node:75 receive a RREP from: 1, max:7,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-14) Target Node:1 receive a RREP from: 75, max:5,min:3,MOY=0
-RREP TABLE: 31
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-15) Target Node:1 receive a RREP from: 75, max:5,min:3,MOY=0
-RREP TABLE: 31
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-16) Target Node:1 receive a RREP from: 75, max:5,min:3,MOY=0
-RREP TABLE: 31
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-3) Target Node:31 receive a RREP from: 0, max:5,min:3,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-4) Target Node:31 receive a RREP from: 0, max:5,min:3,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-5) Target Node:31 receive a RREP from: 0, max:5,min:3,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-6) Target Node:31 receive a RREP from: 0, max:5,min:3,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-4) Target Node:0 receive a RREP from: 3832313845, max:1001,min:3,MOY=249
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 3
-RREP TABLE: 1
-Threshold passed
-5) Target Node:0 receive a RREP from: 31, max:4,min:3,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 3
-RREP TABLE: 1
-7) Target Node:31 receive a RREP from: 0, max:5,min:3,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-5) Target Node:3 receive a RREP from: 51, max:5,min:3,MOY=0
-RREP TABLE: 4
-RREP TABLE: 51
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-6) Target Node:3 receive a RREP from: 51, max:5,min:3,MOY=0
-RREP TABLE: 4
-RREP TABLE: 51
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-7) Target Node:3 receive a RREP from: 2989936755, max:1001,min:3,MOY=142
-RREP TABLE: 4
-RREP TABLE: 51
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-Threshold passed
-8) Target Node:3 receive a RREP from: 2989936755, max:1001,min:3,MOY=124
-RREP TABLE: 4
-RREP TABLE: 51
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-Threshold passed
-9) Target Node:3 receive a RREP from: 51, max:5,min:3,MOY=0
-RREP TABLE: 4
-RREP TABLE: 51
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-8) Target Node:51 receive a RREP from: 3, max:10,min:4,MOY=0
-RREP TABLE: 31
-RREP TABLE: 75
-RREP TABLE: 4
-RREP TABLE: 3
-RREP TABLE: 1
-RREP TABLE: 0
-9) Target Node:51 receive a RREP from: 3, max:10,min:4,MOY=0
-RREP TABLE: 31
-RREP TABLE: 75
-RREP TABLE: 4
-RREP TABLE: 3
-RREP TABLE: 1
-RREP TABLE: 0
-10) Target Node:51 receive a RREP from: 3, max:10,min:4,MOY=0
-RREP TABLE: 31
-RREP TABLE: 75
-RREP TABLE: 4
-RREP TABLE: 3
-RREP TABLE: 1
-RREP TABLE: 0
-10) Target Node:3 receive a RREP from: 2989936755, max:1001,min:3,MOY=99
-RREP TABLE: 4
-RREP TABLE: 51
-RREP TABLE: 2989936755
-RREP TABLE: 0
-RREP TABLE: 1
-Threshold passed
-17) Target Node:1 receive a RREP from: 75, max:5,min:3,MOY=0
-RREP TABLE: 31
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-10) Target Node:75 receive a RREP from: 1, max:8,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-18) Target Node:1 receive a RREP from: 75, max:6,min:3,MOY=0
-RREP TABLE: 31
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-11) Target Node:75 receive a RREP from: 1, max:8,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-12) Target Node:75 receive a RREP from: 1, max:8,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-13) Target Node:75 receive a RREP from: 1, max:8,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-14) Target Node:75 receive a RREP from: 1, max:8,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-8) Target Node:31 receive a RREP from: 0, max:6,min:3,MOY=0
-RREP TABLE: 75
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-6) Target Node:0 receive a RREP from: 31, max:4,min:3,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 3
-RREP TABLE: 1
-9) Target Node:31 receive a RREP from: 0, max:6,min:3,MOY=0
-RREP TABLE: 75
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-10) Target Node:31 receive a RREP from: 0, max:6,min:3,MOY=0
-RREP TABLE: 75
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-11) Target Node:31 receive a RREP from: 0, max:6,min:3,MOY=0
-RREP TABLE: 75
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-7) Target Node:0 receive a RREP from: 31, max:4,min:3,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 3
-RREP TABLE: 1
-8) Target Node:0 receive a RREP from: 31, max:4,min:3,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 3
-RREP TABLE: 1
-9) Target Node:0 receive a RREP from: 31, max:4,min:3,MOY=0
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 3
-RREP TABLE: 1
-19) Target Node:1 receive a RREP from: 75, max:6,min:3,MOY=0
-RREP TABLE: 31
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-15) Target Node:75 receive a RREP from: 1, max:9,min:4,MOY=0
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 31
-RREP TABLE: 1
-RREP TABLE: 0
-RREP TABLE: 3
-20) Target Node:1 receive a RREP from: 75, max:6,min:3,MOY=0
-RREP TABLE: 31
-RREP TABLE: 2989936755
-RREP TABLE: 15
-RREP TABLE: 4
-RREP TABLE: 75
-RREP TABLE: 51
-RREP TABLE: 2272098024
-RREP TABLE: 3
-RREP TABLE: 0
-21) Target Node:1 receive a RREP from: 75, max:6,min:3,MOY=0
-RR
+1) Target Node:0 receive a RREP from: 90, max:2,min:2,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:3,min:3,MOY=0
+1) Target Node:2 receive a RREP from: 50, max:2,min:2,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:3,min:3,MOY=0
+1) Target Node:4 receive a RREP from: 5, max:2,min:2,MOY=0
+2) Target Node:4 receive a RREP from: 5, max:3,min:2,MOY=0
+2) Target Node:0 receive a RREP from: 90, max:3,min:2,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:6,min:6,MOY=0
+3) Target Node:4 receive a RREP from: 5, max:3,min:2,MOY=0
+2) Target Node:2 receive a RREP from: 50, max:2,min:2,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:7,min:7,MOY=0
+3) Target Node:0 receive a RREP from: 90, max:4,min:2,MOY=0
+3) Target Node:2 receive a RREP from: 50, max:2,min:2,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:4,min:4,MOY=0
+4) Target Node:2 receive a RREP from: 50, max:3,min:2,MOY=0
+1) Target Node:0 receive a RREP from: 90, max:5,min:5,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:8,min:8,MOY=0
+5) Target Node:2 receive a RREP from: 50, max:3,min:2,MOY=0
+4) Target Node:4 receive a RREP from: 5, max:4,min:2,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:5,min:5,MOY=0
+5) Target Node:4 receive a RREP from: 5, max:4,min:2,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:6,min:5,MOY=0
+1) Target Node:0 receive a RREP from: 90, max:6,min:6,MOY=0
+1) Target Node:0 receive a RREP from: 90, max:7,min:7,MOY=0
+3) Target Node:3 receive a RREP from: 25, max:7,min:5,MOY=0
+6) Target Node:4 receive a RREP from: 5, max:4,min:2,MOY=0
+6) Target Node:2 receive a RREP from: 50, max:3,min:2,MOY=0
+7) Target Node:4 receive a RREP from: 5, max:5,min:2,MOY=0
+2) Target Node:0 receive a RREP from: 90, max:8,min:7,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:8,min:8,MOY=0
+3) Target Node:0 receive a RREP from: 90, max:8,min:7,MOY=0
+7) Target Node:2 receive a RREP from: 50, max:3,min:2,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:9,min:9,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:9,min:9,MOY=0
+4) Target Node:0 receive a RREP from: 90, max:9,min:7,MOY=0
+1) Target Node:4 receive a RREP from: 5, max:5,min:5,MOY=0
+8) Target Node:2 receive a RREP from: 50, max:3,min:2,MOY=0
+3) Target Node:3 receive a RREP from: 25, max:10,min:9,MOY=0
+9) Target Node:2 receive a RREP from: 50, max:4,min:2,MOY=0
+2) Target Node:4 receive a RREP from: 5, max:6,min:5,MOY=0
+10) Target Node:2 receive a RREP from: 50, max:5,min:2,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:10,min:10,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:10,min:10,MOY=0
+5) Target Node:0 receive a RREP from: 90, max:10,min:7,MOY=0
+11) Target Node:2 receive a RREP from: 50, max:5,min:2,MOY=0
+6) Target Node:0 receive a RREP from: 90, max:10,min:7,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:12,min:12,MOY=0
+3) Target Node:4 receive a RREP from: 5, max:6,min:5,MOY=0
+12) Target Node:2 receive a RREP from: 50, max:5,min:2,MOY=0
+2) Target Node:1 receive a RREP from: 70, max:13,min:12,MOY=0
+4) Target Node:4 receive a RREP from: 5, max:6,min:5,MOY=0
+1) Target Node:2 receive a RREP from: 50, max:6,min:6,MOY=0
+2) Target Node:2 receive a RREP from: 50, max:6,min:6,MOY=0
+5) Target Node:4 receive a RREP from: 5, max:7,min:5,MOY=0
+7) Target Node:0 receive a RREP from: 90, max:10,min:7,MOY=0
+3) Target Node:1 receive a RREP from: 70, max:13,min:12,MOY=0
+3) Target Node:2 receive a RREP from: 50, max:7,min:6,MOY=0
+4) Target Node:1 receive a RREP from: 70, max:14,min:12,MOY=0
+5) Target Node:1 receive a RREP from: 70, max:15,min:12,MOY=0
+6) Target Node:4 receive a RREP from: 5, max:7,min:5,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:16,min:16,MOY=0
+2) Target Node:1 receive a RREP from: 70, max:17,min:16,MOY=0
+7) Target Node:4 receive a RREP from: 5, max:7,min:5,MOY=0
+1) Target Node:0 receive a RREP from: 90, max:11,min:11,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:12,min:12,MOY=0
+2) Target Node:0 receive a RREP from: 90, max:12,min:11,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:17,min:17,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:12,min:12,MOY=0
+4) Target Node:2 receive a RREP from: 50, max:7,min:6,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:18,min:18,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:12,min:12,MOY=0
+3) Target Node:0 receive a RREP from: 90, max:13,min:11,MOY=0
+1) Target Node:4 receive a RREP from: 5, max:8,min:8,MOY=0
+4) Target Node:0 receive a RREP from: 90, max:14,min:11,MOY=0
+2) Target Node:4 receive a RREP from: 5, max:8,min:8,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:18,min:18,MOY=0
+2) Target Node:1 receive a RREP from: 70, max:18,min:18,MOY=0
+3) Target Node:4 receive a RREP from: 5, max:8,min:8,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:13,min:12,MOY=0
+3) Target Node:3 receive a RREP from: 25, max:13,min:12,MOY=0
+4) Target Node:4 receive a RREP from: 5, max:8,min:8,MOY=0
+3) Target Node:1 receive a RREP from: 70, max:19,min:18,MOY=0
+4) Target Node:1 receive a RREP from: 70, max:20,min:18,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:13,min:13,MOY=0
+5) Target Node:0 receive a RREP from: 90, max:14,min:11,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:14,min:14,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:14,min:14,MOY=0
+5) Target Node:4 receive a RREP from: 5, max:9,min:8,MOY=0
+5) Target Node:2 receive a RREP from: 50, max:7,min:6,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:21,min:21,MOY=0
+6) Target Node:0 receive a RREP from: 90, max:14,min:11,MOY=0
+3) Target Node:3 receive a RREP from: 25, max:15,min:14,MOY=0
+4) Target Node:3 receive a RREP from: 25, max:15,min:14,MOY=0
+2) Target Node:1 receive a RREP from: 70, max:22,min:21,MOY=0
+6) Target Node:2 receive a RREP from: 50, max:8,min:6,MOY=0
+3) Target Node:1 receive a RREP from: 70, max:23,min:21,MOY=0
+7) Target Node:0 receive a RREP from: 90, max:15,min:11,MOY=0
+4) Target Node:1 receive a RREP from: 70, max:24,min:21,MOY=0
+6) Target Node:4 receive a RREP from: 5, max:9,min:8,MOY=0
+1) Target Node:0 receive a RREP from: 90, max:16,min:16,MOY=0
+2) Target Node:0 receive a RREP from: 90, max:17,min:16,MOY=0
+7) Target Node:4 receive a RREP from: 5, max:10,min:8,MOY=0
+5) Target Node:1 receive a RREP from: 70, max:25,min:21,MOY=0
+6) Target Node:1 receive a RREP from: 70, max:26,min:21,MOY=0
+7) Target Node:2 receive a RREP from: 50, max:8,min:6,MOY=0
+7) Target Node:1 receive a RREP from: 70, max:27,min:21,MOY=0
+5) Target Node:3 receive a RREP from: 25, max:16,min:14,MOY=0
+8) Target Node:1 receive a RREP from: 70, max:28,min:21,MOY=0
+3) Target Node:0 receive a RREP from: 90, max:17,min:16,MOY=0
+9) Target Node:1 receive a RREP from: 70, max:29,min:21,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:17,min:17,MOY=0
+10) Target Node:1 receive a RREP from: 70, max:29,min:21,MOY=0
+1) Target Node:4 receive a RREP from: 5, max:10,min:10,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:29,min:29,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:17,min:17,MOY=0
+3) Target Node:3 receive a RREP from: 25, max:17,min:17,MOY=0
+4) Target Node:3 receive a RREP from: 25, max:17,min:17,MOY=0
+5) Target Node:3 receive a RREP from: 25, max:18,min:17,MOY=0
+2) Target Node:4 receive a RREP from: 5, max:10,min:10,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:19,min:19,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:29,min:29,MOY=0
+4) Target Node:0 receive a RREP from: 90, max:18,min:16,MOY=0
+8) Target Node:2 receive a RREP from: 50, max:9,min:6,MOY=0
+9) Target Node:2 receive a RREP from: 50, max:10,min:6,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:19,min:19,MOY=0
+10) Target Node:2 receive a RREP from: 50, max:11,min:6,MOY=0
+2) Target Node:1 receive a RREP from: 70, max:30,min:29,MOY=0
+1) Target Node:2 receive a RREP from: 50, max:12,min:12,MOY=0
+3) Target Node:3 receive a RREP from: 25, max:19,min:19,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:31,min:31,MOY=0
+2) Target Node:2 receive a RREP from: 50, max:13,min:12,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:20,min:20,MOY=0
+3) Target Node:4 receive a RREP from: 5, max:10,min:10,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:21,min:21,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:31,min:31,MOY=0
+2) Target Node:1 receive a RREP from: 70, max:32,min:31,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:21,min:21,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:33,min:33,MOY=0
+2) Target Node:1 receive a RREP from: 70, max:34,min:33,MOY=0
+3) Target Node:1 receive a RREP from: 70, max:34,min:33,MOY=0
+4) Target Node:1 receive a RREP from: 70, max:35,min:33,MOY=0
+4) Target Node:4 receive a RREP from: 5, max:11,min:10,MOY=0
+5) Target Node:1 receive a RREP from: 70, max:35,min:33,MOY=0
+3) Target Node:3 receive a RREP from: 25, max:22,min:21,MOY=0
+3) Target Node:2 receive a RREP from: 50, max:14,min:12,MOY=0
+5) Target Node:4 receive a RREP from: 5, max:11,min:10,MOY=0
+1) Target Node:2 receive a RREP from: 50, max:15,min:15,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:36,min:36,MOY=0
+4) Target Node:3 receive a RREP from: 25, max:23,min:21,MOY=0
+1) Target Node:0 receive a RREP from: 90, max:19,min:19,MOY=0
+6) Target Node:4 receive a RREP from: 5, max:11,min:10,MOY=0
+2) Target Node:2 receive a RREP from: 50, max:16,min:15,MOY=0
+5) Target Node:3 receive a RREP from: 25, max:23,min:21,MOY=0
+6) Target Node:3 receive a RREP from: 25, max:23,min:21,MOY=0
+7) Target Node:3 receive a RREP from: 25, max:24,min:21,MOY=0
+3) Target Node:2 receive a RREP from: 50, max:17,min:15,MOY=0
+8) Target Node:3 receive a RREP from: 25, max:25,min:21,MOY=0
+7) Target Node:4 receive a RREP from: 5, max:12,min:10,MOY=0
+2) Target Node:0 receive a RREP from: 90, max:20,min:19,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:25,min:25,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:25,min:25,MOY=0
+1) Target Node:2 receive a RREP from: 50, max:18,min:18,MOY=0
+3) Target Node:3 receive a RREP from: 25, max:25,min:25,MOY=0
+1) Target Node:0 receive a RREP from: 90, max:21,min:21,MOY=0
+2) Target Node:2 receive a RREP from: 50, max:19,min:18,MOY=0
+8) Target Node:4 receive a RREP from: 5, max:13,min:10,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:36,min:36,MOY=0
+3) Target Node:2 receive a RREP from: 50, max:20,min:18,MOY=0
+9) Target Node:4 receive a RREP from: 5, max:13,min:10,MOY=0
+4) Target Node:2 receive a RREP from: 50, max:21,min:18,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:26,min:26,MOY=0
+2) Target Node:1 receive a RREP from: 70, max:36,min:36,MOY=0
+10) Target Node:4 receive a RREP from: 5, max:13,min:10,MOY=0
+11) Target Node:4 receive a RREP from: 5, max:13,min:10,MOY=0
+2) Target Node:3 receive a RREP from: 25, max:26,min:26,MOY=0
+2) Target Node:0 receive a RREP from: 90, max:22,min:21,MOY=0
+5) Target Node:2 receive a RREP from: 50, max:21,min:18,MOY=0
+12) Target Node:4 receive a RREP from: 5, max:14,min:10,MOY=0
+3) Target Node:3 receive a RREP from: 25, max:27,min:26,MOY=0
+4) Target Node:3 receive a RREP from: 25, max:28,min:26,MOY=0
+6) Target Node:2 receive a RREP from: 50, max:22,min:18,MOY=0
+13) Target Node:4 receive a RREP from: 5, max:15,min:10,MOY=0
+5) Target Node:3 receive a RREP from: 25, max:28,min:26,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:37,min:37,MOY=0
+14) Target Node:4 receive a RREP from: 5, max:15,min:10,MOY=0
+1) Target Node:2 receive a RREP from: 50, max:23,min:23,MOY=0
+2) Target Node:1 receive a RREP from: 70, max:37,min:37,MOY=0
+3) Target Node:1 receive a RREP from: 70, max:37,min:37,MOY=0
+1) Target Node:4 receive a RREP from: 5, max:15,min:15,MOY=0
+4) Target Node:1 receive a RREP from: 70, max:38,min:37,MOY=0
+1) Target Node:2 receive a RREP from: 50, max:24,min:24,MOY=0
+2) Target Node:2 receive a RREP from: 50, max:25,min:24,MOY=0
+5) Target Node:1 receive a RREP from: 70, max:38,min:37,MOY=0
+6) Target Node:3 receive a RREP from: 25, max:28,min:26,MOY=0
+3) Target Node:0 receive a RREP from: 90, max:22,min:21,MOY=0
+6) Target Node:1 receive a RREP from: 70, max:38,min:37,MOY=0
+7) Target Node:3 receive a RREP from: 25, max:29,min:26,MOY=0
+3) Target Node:2 receive a RREP from: 50, max:26,min:24,MOY=0
+1) Target Node:4 receive a RREP from: 5, max:16,mNS EXITING...
+in:16,MOY=0
+2) Target Node:4 receive a RREP from: 5, max:16,min:16,MOY=0
+1) Target Node:0 receive a RREP from: 90, max:23,min:23,MOY=0
+1) Target Node:1 receive a RREP from: 70, max:38,min:38,MOY=0
+2) Target Node:1 receive a RREP from: 70, max:38,min:38,MOY=0
+1) Target Node:2 receive a RREP from: 50, max:26,min:26,MOY=0
+3) Target Node:1 receive a RREP from: 70, max:39,min:38,MOY=0
+1) Target Node:3 receive a RREP from: 25, max:29,min:29,MOY=0
+4) Target Node:1 receive a RREP from: 70, max:39,min:38,MOY=0
+1) Target Node:4 receive a RREP from: 5, max:17,min:17,MOY=0
+2) Target Node:2 receive a RREP from: 50, max:27,min:26,MOY=0
+2) Target Node:4 receive a RREP from: 5, max:18,min:17,MOY=0
+3) Target Node:2 receive a RREP from: 50, max:28,min:26,MOY=0

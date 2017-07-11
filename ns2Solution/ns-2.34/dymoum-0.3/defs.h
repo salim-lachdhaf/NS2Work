@@ -89,6 +89,7 @@ struct host_info {
 	int NbRREP ; /*Number of reciveid RREP*/
 	int MaxSeq;  /*Max Sq nb received */
     int MinSeq;  /* Min Sq Nb Received */
+	int random;
 	
 	
     struct dev_info	devs[DYMO_MAX_NR_INTERFACES];
