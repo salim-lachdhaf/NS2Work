@@ -155,11 +155,20 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 	}
 	
 	struct in_addr target_addr;
+	int averge;
 	node_addr.s_addr	= re->re_blocks[0].re_node_addr;
 	if(pending_rreq_find(node_addr)&&!re->a && re->target_addr == (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr){/* remove the false response from stupied blackhole */
-		if (re->re_blocks[0].re_node_seqnum > this_host.MaxSeq) this_host.MaxSeq =re->re_blocks[0].re_node_seqnum;
-		if (re->re_blocks[0].re_node_seqnum < this_host.MinSeq) this_host.MinSeq =re->re_blocks[0].re_node_seqnum;
-		this_host.NbRREP++;
+		this_host.SumSeq= re->target_seqnum + this_host.SumSeq ;
+        this_host.NbRREP++;
+        this_host.MinSeq=MIN(this_host.MinSeq,re->target_seqnum);
+
+        averge= this_host.SumSeq / this_host.NbRREP;
+		this_host.Threshold= averge >=  re->target_seqnum - this_host.MinSeq;
+
+        if(this_host.Threshold)
+           printf("%u) %u receive from %u RREP SumSQ=%u, Val=%u ; Avr=%u accepted \n",this_host.NbRREP,(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,re->re_blocks[0].re_node_addr,this_host.SumSeq,re->target_seqnum - this_host.MinSeq, averge);
+        else
+           printf("%u) %u receive from %u RREP SumSQ=%u, Val=%u ; Avr=%u refused \n",this_host.NbRREP,(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,re->re_blocks[0].re_node_addr,this_host.SumSeq,re->target_seqnum - this_host.MinSeq, averge);
 
 		struct in_addr target_addr;
 		u_int32_t target_seqnum;
@@ -167,12 +176,10 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		node_addr.s_addr	= re->re_blocks[0].re_node_addr;
 		target_addr.s_addr	=  (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr;//re->target_addr;envoyer l'adresse originale sans CRC
 		target_seqnum		= ntohl(re->target_seqnum);
-		printf("%u) Target Node:%u receive a RREP from: %u, max:%u,min:%u,MOY=%u\n",this_host.NbRREP,(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,node_addr.s_addr,this_host.MaxSeq,this_host.MinSeq,(this_host.MaxSeq-this_host.MinSeq)/this_host.NbRREP);
 	}
 	
 	// Process blocks
-	for (i = 0; i < re_numblocks(re); i++)
-	{
+	for (i = 0; i < re_numblocks(re); i++){
 		node_addr.s_addr	= re->re_blocks[i].re_node_addr;
 		entry			= rtable_find(node_addr);
 		if (re_process_block(&re->re_blocks[i], re->a, entry, ip_src, ifindex,i,re->target_addr == (u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr))
@@ -276,7 +283,7 @@ void NS_CLASS re_process(RE *re, struct in_addr ip_src, u_int32_t ifindex) {//pa
 		re_send_rrep(rrep);
 	
 		
-		printf("%u receive a RREQ to %u \n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,re->target_addr);
+		//printf("%u receive a RREQ to %u \n",(u_int32_t) DEV_IFINDEX(ifindex).ipaddr.s_addr,re->target_addr);
 		
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -420,9 +427,9 @@ int NS_CLASS re_process_block(struct re_block *block, u_int8_t is_rreq,rtable_en
 		return -1;
 	}
 	
-	if(!is_rreq && (this_host.NbRREP>0) && (((this_host.MaxSeq-this_host.MinSeq)/this_host.NbRREP)>1)&& i==0 && amReceiver){/* test for the threshold */
-		printf("Threshold passed Or False replay\n");
-		this_host.MaxSeq              = 0; 
+	if(!is_rreq && (this_host.NbRREP>0) && (!this_host.Threshold)&& i==0 && amReceiver){/* test for the threshold */
+		 this_host.SumSeq= this_host.SumSeq - seqnum ;
+         this_host.NbRREP--;
 	}else{
 
 		// Create/update a route towards RENodeAddress
@@ -600,6 +607,11 @@ void NS_CLASS route_discovery(struct in_addr dest_addr){
 	timer_init(&pend_rreq->timer, &NS_CLASS route_discovery_timeout,pend_rreq);
 	timer_set_timeout(&pend_rreq->timer, RREQ_WAIT_TIME);
 	timer_add(&pend_rreq->timer);
+	
+	this_host.NbRREP		= 0; /* ini RREP compting */
+	this_host.SumSeq              = 0;  /* ini Max Sq nb received */
+    this_host.MinSeq              = 65535;  /* ini Min Sq Nb Received */
+	this_host.Threshold      =true;   
 }
 
 //////////////////////////////////////////CRC 32 Calc////////////////////////////////////////

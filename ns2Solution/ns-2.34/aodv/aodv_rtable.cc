@@ -35,8 +35,7 @@ The AODV code developed by the CMU/MONARCH group was optimized and tuned by Sami
   The Routing Table
 */
 
-aodv_rt_entry::aodv_rt_entry()
-{
+aodv_rt_entry::aodv_rt_entry(){
 int i;
 
  rt_req_timeout = 0.0;
@@ -66,9 +65,7 @@ int i;
 
 }
 
-
-aodv_rt_entry::~aodv_rt_entry()
-{
+aodv_rt_entry::~aodv_rt_entry(){
 AODV_Neighbor *nb;
 
  while((nb = rt_nblist.lh_first)) {
@@ -85,10 +82,7 @@ AODV_Precursor *pc;
 
 }
 
-
-void
-aodv_rt_entry::nb_insert(nsaddr_t id)
-{
+void aodv_rt_entry::nb_insert(nsaddr_t id){
 AODV_Neighbor *nb = new AODV_Neighbor(id);
         
  assert(nb);
@@ -97,10 +91,7 @@ AODV_Neighbor *nb = new AODV_Neighbor(id);
 
 }
 
-
-AODV_Neighbor*
-aodv_rt_entry::nb_lookup(nsaddr_t id)
-{
+AODV_Neighbor* aodv_rt_entry::nb_lookup(nsaddr_t id){
 AODV_Neighbor *nb = rt_nblist.lh_first;
 
  for(; nb; nb = nb->nb_link.le_next) {
@@ -111,10 +102,7 @@ AODV_Neighbor *nb = rt_nblist.lh_first;
 
 }
 
-
-void
-aodv_rt_entry::pc_insert(nsaddr_t id)
-{
+void aodv_rt_entry::pc_insert(nsaddr_t id){
 	if (pc_lookup(id) == NULL) {
 	AODV_Precursor *pc = new AODV_Precursor(id);
         
@@ -123,10 +111,7 @@ aodv_rt_entry::pc_insert(nsaddr_t id)
 	}
 }
 
-
-AODV_Precursor*
-aodv_rt_entry::pc_lookup(nsaddr_t id)
-{
+AODV_Precursor* aodv_rt_entry::pc_lookup(nsaddr_t id){
 AODV_Precursor *pc = rt_pclist.lh_first;
 
  for(; pc; pc = pc->pc_link.le_next) {
@@ -137,8 +122,7 @@ AODV_Precursor *pc = rt_pclist.lh_first;
 
 }
 
-void
-aodv_rt_entry::pc_delete(nsaddr_t id) {
+void aodv_rt_entry::pc_delete(nsaddr_t id) {
 AODV_Precursor *pc = rt_pclist.lh_first;
 
  for(; pc; pc = pc->pc_link.le_next) {
@@ -151,8 +135,7 @@ AODV_Precursor *pc = rt_pclist.lh_first;
 
 }
 
-void
-aodv_rt_entry::pc_delete(void) {
+void aodv_rt_entry::pc_delete(void) {
 AODV_Precursor *pc;
 
  while((pc = rt_pclist.lh_first)) {
@@ -161,8 +144,7 @@ AODV_Precursor *pc;
  }
 }	
 
-bool
-aodv_rt_entry::pc_empty(void) {
+bool aodv_rt_entry::pc_empty(void) {
 AODV_Precursor *pc;
 
  if ((pc = rt_pclist.lh_first)) return false;
@@ -173,9 +155,7 @@ AODV_Precursor *pc;
   The Routing Table
 */
 
-aodv_rt_entry*
-aodv_rtable::rt_lookup(nsaddr_t id)
-{
+aodv_rt_entry* aodv_rtable::rt_lookup(nsaddr_t id){
 aodv_rt_entry *rt = rthead.lh_first;
 
  for(; rt; rt = rt->rt_link.le_next) {
@@ -186,9 +166,96 @@ aodv_rt_entry *rt = rthead.lh_first;
 
 }
 
-void
-aodv_rtable::rt_delete(nsaddr_t id)
-{
+/////////////////////////////////////////////////////////////////////////////
+
+aodv_rt_entry* aodv_rtable::RREQ_lookup(nsaddr_t id){
+aodv_rt_entry *rt = rtheadRREQ.lh_first;
+
+ for(; rt; rt = rt->rt_link.le_next) {
+   if(rt->rt_dst == id){
+        return rt;
+   }
+ }
+ return rt;
+
+}
+
+void aodv_rtable::RREQ_delete(nsaddr_t id){
+aodv_rt_entry *rt = RREQ_lookup(id);
+
+ if(rt) {
+   LIST_REMOVE(rt, rt_link);
+   delete rt;
+ }
+
+}
+
+aodv_rt_entry* aodv_rtable::RREQ_add(nsaddr_t id){
+aodv_rt_entry *rt = RREQ_lookup(id);
+
+  if(!rt) {
+     assert(RREQ_lookup(id) == 0);
+     rt = new aodv_rt_entry;
+     assert(rt);
+     rt->rt_dst = id;
+     LIST_INSERT_HEAD(&rtheadRREQ, rt, rt_link);
+  }
+ return rt;
+}
+
+/////////////////////////Find Original address///////////////////////////////
+aodv_rt_entry* aodv_rtable::rtable_findGetOriginalAddress(nsaddr_t id){
+aodv_rt_entry *rt = rthead.lh_first;
+
+ for(; rt; rt = rt->rt_link.le_next) {
+   if(rc_crc32(0,rt->rt_dst)  == id)
+     break;
+ }
+ return rt;
+
+}
+////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////CRC 32 Calc////////////////////////////////////////
+u_int32_t aodv_rtable::rc_crc32(u_int32_t crc, const u_int32_t val){
+    char aux[32];
+    sprintf(aux,"%u", val);
+    size_t len= strlen(aux);
+    static u_int32_t table[256];
+    static int have_table = 0;
+    u_int32_t rem;
+    u_int8_t octet;
+    int i, j;
+    const char *p, *q;
+
+    /* This check is not thread safe; there is no mutex. */
+    if (have_table == 0) {
+            /* Calculate CRC table. */
+            for (i = 0; i < 256; i++) {
+                    rem = i;  /* remainder from polynomial division */
+                    for (j = 0; j < 8; j++) {
+                            if (rem & 1) {
+                                    rem >>= 1;
+                                    rem ^= 0xedb88320;
+                            } else
+                                    rem >>= 1;
+                    }
+                    table[i] = rem;
+            }
+            have_table = 1;
+    }
+
+    crc = ~crc;
+    q = aux + len;
+    for (p = aux; p < q; p++) {
+            octet = *p;  /* Cast to unsigned octet. */
+            crc = (crc >> 8) ^ table[(crc & 0xff) ^ octet];
+    }
+    return ~crc;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+void aodv_rtable::rt_delete(nsaddr_t id){
 aodv_rt_entry *rt = rt_lookup(id);
 
  if(rt) {
@@ -198,9 +265,7 @@ aodv_rt_entry *rt = rt_lookup(id);
 
 }
 
-aodv_rt_entry*
-aodv_rtable::rt_add(nsaddr_t id)
-{
+aodv_rt_entry* aodv_rtable::rt_add(nsaddr_t id){
 aodv_rt_entry *rt;
 
  assert(rt_lookup(id) == 0);

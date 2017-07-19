@@ -30,7 +30,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 
-#define ROUTE_TIMEOUT		5000 
+#define ROUTE_TIMEOUT		10000 
 #define ROUTE_DELETE_TIMEOUT	(5 * ROUTE_TIMEOUT)
 
 #define RT_INVALID	0

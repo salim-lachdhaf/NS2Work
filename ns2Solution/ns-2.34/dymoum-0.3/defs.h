@@ -87,10 +87,10 @@ struct host_info {
 	
 	bool BLACKHOLE; /*is a black hole*/
 	int NbRREP ; /*Number of reciveid RREP*/
-	int MaxSeq;  /*Max Sq nb received */
+	int SumSeq;  /*Max Sq nb received */
     int MinSeq;  /* Min Sq Nb Received */
-	int random;
-	
+	bool Threshold;
+
 	
     struct dev_info	devs[DYMO_MAX_NR_INTERFACES];
 };

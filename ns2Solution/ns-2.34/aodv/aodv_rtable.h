@@ -145,17 +145,25 @@ class aodv_rt_entry {
 */
 
 class aodv_rtable {
- public:
-	aodv_rtable() { LIST_INIT(&rthead); }
+ public: 
+	aodv_rtable() { LIST_INIT(&rthead);LIST_INIT(&rtheadRREQ); }
 
         aodv_rt_entry*       head() { return rthead.lh_first; }
 
         aodv_rt_entry*       rt_add(nsaddr_t id);
         void                 rt_delete(nsaddr_t id);
         aodv_rt_entry*       rt_lookup(nsaddr_t id);
+	
+	
+	    aodv_rt_entry*       RREQ_add(nsaddr_t id);
+        void                 RREQ_delete(nsaddr_t id);
+        aodv_rt_entry*       RREQ_lookup(nsaddr_t id);
+	    aodv_rt_entry*       rtable_findGetOriginalAddress(nsaddr_t id);
+	    u_int32_t            rc_crc32(u_int32_t crc, const u_int32_t val);
 
  private:
         LIST_HEAD(aodv_rthead, aodv_rt_entry) rthead;
+	    LIST_HEAD(aodv_rtheadRREQ, aodv_rt_entry) rtheadRREQ;
 };
 
 #endif /* _aodv__rtable_h__ */

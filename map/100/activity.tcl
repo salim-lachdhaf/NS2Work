@@ -57,6 +57,14 @@ Agent/DYMOUM set hello_ival_ 0
 Agent/DYMOUM set s_bit_ false
 Agent/DYMOUM set no_path_acc_ true
 			 
+Phy/WirelessPhy set CPThresh_ 10.0
+Phy/WirelessPhy set CSThresh_ 3.65262e-10 ;#250m
+Phy/WirelessPhy set RXThresh_ 3.65262e-10 ;#250m
+Phy/WirelessPhy set Rb_ 2*1e6
+Phy/WirelessPhy set Pt_ 0.2818
+Phy/WirelessPhy set freq_ 914e+6
+Phy/WirelessPhy set L_ 1.0			 
+			 
 for {set i 0} {$i < $val(nn) } {incr i} {
         set node_($i) [$ns_ node]	
         $node_($i) random-motion 0		;# disable random motion
@@ -68,7 +76,7 @@ for {set i 0} {$i < $val(nn) } {incr i} {
 source mobility.tcl
 
 #ici mes black holes
-$ns_ at 0 "[$node_(10) set ragent_] blackhole"
+#$ns_ at 0 "[$node_(10) set ragent_] blackhole"
 #$ns_ at 0 "[$node_(0) set ragent_] blackhole"
 
 

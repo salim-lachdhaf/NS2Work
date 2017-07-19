@@ -83,9 +83,10 @@ void NS_CLASS route_discovery_timeout(void *arg)
 	
 	
 	//initialisé le nbre de RREP received 
-	this_host.NbRREP		= 0;   
-	this_host.MaxSeq              = 0;      /* ini Max Sq nb received */
-	this_host.MinSeq              = 65535;  /* ini Min Sq Nb Received */
+	this_host.NbRREP		= 0; /* ini RREP compting */
+	this_host.SumSeq              = 0;  /* ini Max Sq nb received */
+    this_host.MinSeq              = 65535;  /* ini Min Sq Nb Received */
+	this_host.Threshold      =true;   
 
 	
 	if (!entry)

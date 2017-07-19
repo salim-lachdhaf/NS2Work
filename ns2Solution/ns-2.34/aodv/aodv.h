@@ -217,9 +217,7 @@ class AODV: public Agent {
          * Route Table Management
          */
         void            rt_resolve(Packet *p);
-        void            rt_update(aodv_rt_entry *rt, u_int32_t seqnum,
-		     	  	u_int16_t metric, nsaddr_t nexthop,
-		      		double expire_time);
+        void            rt_update(aodv_rt_entry *rt, u_int32_t seqnum,u_int16_t metric, nsaddr_t nexthop,double expire_time);
         void            rt_down(aodv_rt_entry *rt);
         void            local_rt_repair(aodv_rt_entry *rt, Packet *p);
  public:
@@ -238,7 +236,7 @@ class AODV: public Agent {
         AODV_Neighbor*       nb_lookup(nsaddr_t id);
         void            nb_delete(nsaddr_t id);
         void            nb_purge(void);
-
+  
         /*
          * Broadcast ID Management
          */
@@ -254,9 +252,7 @@ class AODV: public Agent {
         void            sendHello(void);
         void            sendRequest(nsaddr_t dst);
 
-        void            sendReply(nsaddr_t ipdst, u_int32_t hop_count,
-                                  nsaddr_t rpdst, u_int32_t rpseq,
-                                  u_int32_t lifetime, double timestamp);
+        void            sendReply(nsaddr_t ipdst, u_int32_t hop_count,nsaddr_t rpdst, u_int32_t rpseq,u_int32_t lifetime, double timestamp);
         void            sendError(Packet *p, bool jitter = true);
                                           
         /*
@@ -275,7 +271,10 @@ class AODV: public Agent {
 	double 		PerHopTime(aodv_rt_entry *rt);
 
  //////////////////////////Black hole declaration
-        bool BLACKHOLE; //BALCK HOLE DECLARATION
+  bool BLACKHOLE; //BALCK HOLE DECLARATION
+  int SumSeq;
+  int NbRREP;
+  int MinSeq;
  ///////////////////////////////////////////////
 
 
@@ -284,8 +283,9 @@ class AODV: public Agent {
         int             bid;                    // Broadcast ID
 
         aodv_rtable         rthead;                 // routing table
+	    aodv_rtable         rtheadRREQ;  
         aodv_ncache         nbhead;                 // Neighbor Cache
-        aodv_bcache          bihead;                 // Broadcast ID Cache
+        aodv_bcache          bihead;                // Broadcast ID Cache
 
         /*
          * Timers
